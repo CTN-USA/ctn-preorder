@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Accept your quote | CTN-USA</title>
+<style>
+:root{--ink:#10222E;--teal:#0E6A87;--teal-d:#0A536B;--mute:#5A6D79;--line:#D3DEE5;--bg:#EEF3F6;--ok:#2C7A4B;--err:#B3261E}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+header{background:var(--ink);color:#fff;padding:22px 16px;text-align:center;font-weight:700;letter-spacing:.08em}
+main{max-width:620px;margin:20px auto;padding:0 16px 40px}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:22px}
+h1{font-size:22px;margin:0 0 4px}
+.mute{color:var(--mute);font-size:14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
+td,th{padding:8px;border-bottom:1px solid var(--line);text-align:left}
+td:nth-child(n+2),th:nth-child(n+2){text-align:right}
+.tot{font-weight:700;font-size:17px;display:flex;justify-content:space-between;border-top:2px solid var(--ink);padding-top:8px}
+.note{background:#EAF5F9;border-left:4px solid var(--teal);padding:10px 12px;border-radius:6px;font-size:14px;margin:16px 0}
+button{background:var(--teal);color:#fff;border:0;border-radius:10px;font:inherit;font-weight:700;padding:14px;width:100%;font-size:17px;cursor:pointer}
+button:hover{background:var(--teal-d)}button[disabled]{opacity:.6;cursor:wait}
+.ok{color:var(--ok)}.err{color:var(--err)}
+.hide{display:none}
+</style>
+</head>
+<body>
+<header>CTN-USA</header>
+<main><div class="card" id="c"><p class="mute">Loading your quote…</p></div></main>
+<script>
+/* Paste the preorder-accept function URL here after deployment. */
+var ACCEPT_API = "https://ocgopivrkhroeiaoaiyy.supabase.co/functions/v1/preorder-accept";
+
+var c=document.getElementById("c");
+var t=new URLSearchParams(location.search).get("t")||"";
+function esc(v){return String(v==null?"":v).replace(/[&<>"']/g,function(m){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]})}
+function usd(n){return "$"+Number(n).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2})}
+function fmt(d){return d?new Date(d).toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"}):""}
+
+function render(s){
+  var rows=s.lines.map(function(l){return "<tr><td>"+esc(l.name)+"</td><td>"+l.qty+"</td><td>"+usd(l.unit_price*l.qty)+"</td></tr>"}).join("");
+  var terms=s.payment_method==="cash"
+    ?"After you accept, we'll send a secure payment link or wire instructions for your <b>50% deposit</b>. Your order is confirmed when the deposit is received."
+    :"After you accept, we'll guide you through <b>Brickhouse financing</b>. Your order is accepted once your financing is approved.";
+  var head="<h1>Quote "+esc(s.number)+"</h1><div class='mute'>Prepared for "+esc(s.company)+" · valid until "+fmt(s.expires_at)+"</div>"+
+    "<table><thead><tr><th>Item</th><th>Qty</th><th>Amount</th></tr></thead><tbody>"+rows+"</tbody></table>"+
+    "<div class='tot'><span>Equipment total</span><span>"+usd(s.total)+"</span></div>"+
+    "<div class='mute' style='margin-top:6px'>Sales tax and freight are confirmed on the order.</div>";
+  if(s.accepted){
+    c.innerHTML=head+"<div class='note'><b class='ok'>Quote accepted. Thank you!</b><br>"+(s.payment_method==="cash"
+      ?"We'll email your payment link or wire instructions shortly."
+      :"We'll be in touch shortly to start your Brickhouse financing.")+"</div>"; return;
+  }
+  if(s.expired){ c.innerHTML=head+"<div class='note'><b class='err'>This quote has expired.</b> Call (904) 659-2442 or email sales@CTN-USA.com for a refreshed quote.</div>"; return; }
+  c.innerHTML=head+"<div class='note'>"+terms+"</div>"+
+    "<label style='display:flex;gap:10px;font-size:14px;margin:14px 0'><input type='checkbox' id='ag' style='width:18px;height:18px;margin-top:3px'> <span>I'm authorized to accept this quote for "+esc(s.company)+" and understand my order is not final until the "+(s.payment_method==="cash"?"deposit is received":"Brickhouse financing is approved")+".</span></label>"+
+    "<button id='go'>Accept this quote</button><div id='e' class='err' style='margin-top:10px;font-size:14px'></div>";
+  document.getElementById("go").onclick=function(){
+    if(!document.getElementById("ag").checked){document.getElementById("e").textContent="Please check the box to confirm.";return}
+    var b=this;b.disabled=true;b.textContent="Accepting…";
+    fetch(ACCEPT_API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({t:t})})
+      .then(function(r){return r.json()}).then(function(j){ if(!j.ok&&!j.accepted)throw new Error(j.error||"Failed"); render(j) })
+      .catch(function(e){b.disabled=false;b.textContent="Accept this quote";document.getElementById("e").textContent=e.message+" Please try again or call (904) 659-2442."});
+  };
+}
+
+if(!ACCEPT_API){
+  render({number:"CTN-DEMO",company:"Demo Company",expires_at:new Date(Date.now()+30*864e5).toISOString(),total:0,payment_method:"cash",accepted:false,expired:false,lines:[{name:"OxyPro VH2 hyperbaric chamber",qty:1,unit_price:0}]});
+}else if(!t){c.innerHTML="<p class='err'>This link isn't valid.</p>"}
+else fetch(ACCEPT_API+"?t="+encodeURIComponent(t)).then(function(r){return r.json()}).then(function(j){if(!j.ok&&!j.lines)throw new Error(j.error);render(j)}).catch(function(e){c.innerHTML="<p class='err'>"+esc(e.message||"We couldn't load your quote.")+" Call (904) 659-2442.</p>"});
+</script>
+</body>
+</html>

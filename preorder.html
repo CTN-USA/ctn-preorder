@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pre-Order the OxyPro VH1 / VH2 | CTN-USA</title>
+<meta name="description" content="Reserve your OxyPro VH1 or VH2 hyperbaric chamber with CTN-USA. Submit your details and receive a custom quote by email.">
+<style>
+:root{--ink:#10222E;--teal:#0E6A87;--teal-d:#0A536B;--mute:#5A6D79;--line:#D3DEE5;--bg:#EEF3F6;--card:#fff;--ok:#2C7A4B;--err:#B3261E;--r:10px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+header{background:var(--ink);color:#fff;padding:28px 16px}
+header .in,main{max-width:820px;margin:0 auto}
+header h1{margin:0 0 6px;font-size:28px;line-height:1.2}
+header p{margin:0;color:#C9D8E0;max-width:60ch}
+.brand{font-weight:700;letter-spacing:.08em;font-size:13px;text-transform:uppercase;color:#7FD0E8;margin-bottom:10px}
+main{padding:20px 16px 60px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0 0 20px;padding:0;list-style:none;counter-reset:s}
+.steps li{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:12px;font-size:14px;counter-increment:s}
+.steps li:before{content:counter(s);display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--teal);color:#fff;font-size:12px;font-weight:700;margin-right:8px}
+fieldset{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px;margin:0 0 16px}
+legend{font-weight:700;font-size:18px;padding:0 6px}
+.sub{color:var(--mute);font-size:14px;margin:-4px 0 14px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.full{grid-column:1/-1}
+label{display:block;font-size:14px;font-weight:600;margin-bottom:4px}
+label .opt{font-weight:400;color:var(--mute)}
+input[type=text],input[type=email],input[type=tel],input[type=url],input[type=number],input[type=date],select,textarea{width:100%;font:inherit;padding:10px 12px;border:1px solid #B7C6D0;border-radius:8px;background:#fff;color:var(--ink)}
+textarea{min-height:90px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--teal);outline-offset:1px;border-color:var(--teal)}
+.bad input,.bad select,.bad textarea{border-color:var(--err)}
+.msg{display:none;color:var(--err);font-size:13px;margin-top:4px}
+.bad .msg{display:block}
+.prod{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pcard{border:1px solid var(--line);border-radius:var(--r);padding:16px;background:#F8FBFC}
+.pcard h3{margin:0 0 2px;font-size:18px}
+.pcard small{color:var(--mute)}
+.qty{display:flex;align-items:center;gap:8px;margin-top:12px}
+.qty button{width:40px;height:40px;border-radius:8px;border:1px solid #B7C6D0;background:#fff;font-size:20px;cursor:pointer;color:var(--ink)}
+.qty input{width:70px;text-align:center}
+.pay{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.opt-card{position:relative;border:2px solid var(--line);border-radius:var(--r);padding:16px 16px 16px 44px;cursor:pointer;background:#fff;display:block;font-weight:400;margin:0}
+.opt-card input{position:absolute;left:16px;top:20px;width:18px;height:18px}
+.opt-card b{display:block;font-size:16px}
+.opt-card span{font-size:14px;color:var(--mute)}
+.opt-card:has(input:checked){border-color:var(--teal);background:#EAF5F9}
+.panel{display:none;margin-top:16px;padding-top:16px;border-top:1px dashed var(--line)}
+.panel.on{display:block}
+.note{background:#EAF5F9;border-left:4px solid var(--teal);padding:10px 12px;border-radius:6px;font-size:14px;margin:12px 0 0}
+.chk{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:14px;margin:10px 0}
+.chk input{margin-top:4px;width:18px;height:18px;flex:none}
+.hp{position:absolute;left:-9999px;height:0;overflow:hidden}
+button.go{background:var(--teal);color:#fff;border:0;border-radius:10px;font:inherit;font-weight:700;padding:14px 28px;cursor:pointer;font-size:17px;width:100%}
+button.go:hover{background:var(--teal-d)}
+button.go[disabled]{opacity:.6;cursor:wait}
+#err{display:none;background:#FDECEA;border:1px solid var(--err);color:var(--err);padding:12px;border-radius:8px;margin-bottom:12px}
+#done{display:none;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px;text-align:center}
+#done h2{margin:0 0 8px;color:var(--ok)}
+#done .ref{display:inline-block;margin:10px 0;padding:8px 16px;background:var(--bg);border-radius:8px;font-weight:700;letter-spacing:.04em}
+#demo{display:none;text-align:left;background:#10222E;color:#C9F0FF;padding:14px;border-radius:8px;font-size:12px;overflow:auto;margin-top:16px;white-space:pre-wrap}
+footer{max-width:820px;margin:0 auto;padding:0 16px 40px;color:var(--mute);font-size:13px}
+@media(max-width:640px){.grid,.prod,.pay,.steps{grid-template-columns:1fr}fieldset{padding:16px}header h1{font-size:24px}}
+</style>
+</head>
+<body>
+<header><div class="in">
+  <div class="brand">CTN-USA</div>
+  <h1>Pre-order the OxyPro VH1 or VH2</h1>
+  <p>Tell us what you need and where it's going. We'll prepare a custom quote and email it to you.</p>
+</div></header>
+
+<main>
+<ol class="steps">
+  <li>Submit this form</li>
+  <li>Receive your custom quote by email</li>
+  <li>Accept it and we'll send payment details</li>
+</ol>
+
+<form id="f" novalidate>
+<div id="err" role="alert"></div>
+
+<fieldset>
+  <legend>1. Your pre-order</legend>
+  <p class="sub">Choose one or both models. Pricing appears on your emailed quote.</p>
+  <div class="prod" data-group="products">
+    <div class="pcard"><h3>OxyPro VH1</h3><small>Hyperbaric chamber</small>
+      <div class="qty"><button type="button" data-q="vh1" data-d="-1" aria-label="Fewer VH1">−</button><input type="number" id="vh1" min="0" max="50" value="0" inputmode="numeric" aria-label="VH1 quantity"><button type="button" data-q="vh1" data-d="1" aria-label="More VH1">+</button></div></div>
+    <div class="pcard"><h3>OxyPro VH2</h3><small>Hyperbaric chamber</small>
+      <div class="qty"><button type="button" data-q="vh2" data-d="-1" aria-label="Fewer VH2">−</button><input type="number" id="vh2" min="0" max="50" value="0" inputmode="numeric" aria-label="VH2 quantity"><button type="button" data-q="vh2" data-d="1" aria-label="More VH2">+</button></div></div>
+  </div>
+  <div class="msg" id="m_products" style="margin-top:8px">Enter a quantity of at least 1 for one of the models.</div>
+  <div class="grid" style="margin-top:14px">
+    <div><label for="timeframe">Desired delivery date <span class="opt">(optional)</span></label><input type="date" id="timeframe"></div>
+    <div><label for="install">Installation</label>
+      <select id="install"><option value="ctn">I'd like CTN-USA to arrange installation</option><option value="own">My own team or contractor will install</option><option value="unsure">Not sure yet</option></select></div>
+  </div>
+</fieldset>
+
+<fieldset>
+  <legend>2. How will you pay?</legend>
+  <div class="pay" role="radiogroup" aria-label="Payment method">
+    <label class="opt-card"><input type="radio" name="pay" value="cash"><b>Cash / wire</b><span>A 50% deposit is required to confirm your order.</span></label>
+    <label class="opt-card"><input type="radio" name="pay" value="financing"><b>Financing through Brickhouse</b><span>Your order is accepted once your financing is approved.</span></label>
+  </div>
+  <div class="msg" id="m_pay" style="margin-top:8px">Please choose a payment method.</div>
+  <div class="panel" id="p_cash"><div class="note">After you accept your quote, we'll send you a secure payment link or wire instructions for the 50% deposit. Your order is confirmed when the deposit is received.</div></div>
+  <div class="panel" id="p_fin">
+    <div class="grid">
+      <div class="full"><label for="bh_status">Where are you with Brickhouse?</label>
+        <select id="bh_status"><option value="not_started">I haven't applied yet</option><option value="applied">I've applied and I'm waiting on a decision</option><option value="approved">I'm approved</option></select></div>
+      <div id="bh_refwrap" class="full" style="display:none"><label for="bh_ref">Approval or application reference <span class="opt">(if you have one)</span></label><input type="text" id="bh_ref" maxlength="80"></div>
+    </div>
+    <div class="note">Financing must be approved before CTN-USA can accept your order. If you haven't applied yet, we'll walk you through it after you accept your quote.</div>
+  </div>
+</fieldset>
+
+<fieldset>
+  <legend>3. About you</legend>
+  <div class="grid">
+    <div data-f="first"><label for="first">First name</label><input type="text" id="first" autocomplete="given-name" maxlength="60"><div class="msg">Required</div></div>
+    <div data-f="last"><label for="last">Last name</label><input type="text" id="last" autocomplete="family-name" maxlength="60"><div class="msg">Required</div></div>
+    <div data-f="title"><label for="title">Title / role</label><input type="text" id="title" autocomplete="organization-title" maxlength="80"><div class="msg">Required</div></div>
+    <div data-f="phone"><label for="phone">Mobile or direct phone</label><input type="tel" id="phone" autocomplete="tel" maxlength="30"><div class="msg">Enter a valid phone number</div></div>
+    <div class="full" data-f="email"><label for="email">Email <span class="opt">(your quote is sent here)</span></label><input type="email" id="email" autocomplete="email" maxlength="120"><div class="msg">Enter a valid email address</div></div>
+  </div>
+  <label class="chk"><input type="checkbox" id="authorized"> <span>I am authorized to place this pre-order on behalf of the company below.</span></label>
+  <div class="msg" id="m_authorized">Please confirm.</div>
+</fieldset>
+
+<fieldset>
+  <legend>4. Your company</legend>
+  <div class="grid">
+    <div class="full" data-f="company"><label for="company">Legal company name</label><input type="text" id="company" autocomplete="organization" maxlength="120"><div class="msg">Required</div></div>
+    <div><label for="dba">Doing business as <span class="opt">(if different)</span></label><input type="text" id="dba" maxlength="120"></div>
+    <div><label for="website">Website <span class="opt">(optional)</span></label><input type="url" id="website" placeholder="https://" maxlength="160"></div>
+    <div data-f="entity"><label for="entity">Business type</label>
+      <select id="entity"><option value="">Select…</option><option>LLC</option><option>Corporation</option><option>Partnership</option><option>Sole proprietorship</option><option>Nonprofit</option><option>Government / public entity</option><option>Other</option></select><div class="msg">Required</div></div>
+    <div data-f="vertical"><label for="vertical">Industry</label>
+      <select id="vertical"><option value="">Select…</option><option>Corporate wellness</option><option>Pro / collegiate sports team</option><option>Medical &amp; allied health</option><option>Hospitality</option><option>Retail wellness</option><option>Fitness</option><option>Residential</option><option>Public sector</option><option>Other</option></select><div class="msg">Required</div></div>
+  </div>
+  <h3 style="font-size:15px;margin:20px 0 10px">Billing address</h3>
+  <div class="grid">
+    <div class="full" data-f="bill_street"><label for="bill_street">Street address</label><input type="text" id="bill_street" autocomplete="billing street-address" maxlength="120"><div class="msg">Required</div></div>
+    <div data-f="bill_city"><label for="bill_city">City</label><input type="text" id="bill_city" autocomplete="billing address-level2" maxlength="60"><div class="msg">Required</div></div>
+    <div class="grid" style="gap:14px">
+      <div data-f="bill_state"><label for="bill_state">State</label><select id="bill_state" autocomplete="billing address-level1"></select><div class="msg">Required</div></div>
+      <div data-f="bill_zip"><label for="bill_zip">ZIP</label><input type="text" id="bill_zip" autocomplete="billing postal-code" inputmode="numeric" maxlength="10"><div class="msg">Enter a valid ZIP</div></div>
+    </div>
+  </div>
+  <label class="chk"><input type="checkbox" id="taxex"> <span>My organization is exempt from sales tax. We'll request your exemption certificate when we confirm your order.</span></label>
+  <div class="panel" id="p_tax"><div class="grid">
+    <div><label for="tax_state">Exemption state</label><select id="tax_state"></select></div>
+    <div><label for="tax_cert">Certificate or exemption number <span class="opt">(if available)</span></label><input type="text" id="tax_cert" maxlength="60"></div>
+  </div></div>
+</fieldset>
+
+<fieldset>
+  <legend>5. Delivery location</legend>
+  <p class="sub">Where will the equipment be delivered and installed?</p>
+  <label class="chk"><input type="checkbox" id="same"> <span>Same as billing address</span></label>
+  <div id="siteaddr" class="grid">
+    <div class="full" data-f="site_street"><label for="site_street">Street address</label><input type="text" id="site_street" maxlength="120"><div class="msg">Required</div></div>
+    <div data-f="site_city"><label for="site_city">City</label><input type="text" id="site_city" maxlength="60"><div class="msg">Required</div></div>
+    <div class="grid" style="gap:14px">
+      <div data-f="site_state"><label for="site_state">State</label><select id="site_state"></select><div class="msg">Required</div></div>
+      <div data-f="site_zip"><label for="site_zip">ZIP</label><input type="text" id="site_zip" inputmode="numeric" maxlength="10"><div class="msg">Enter a valid ZIP</div></div>
+    </div>
+  </div>
+  <div class="grid" style="margin-top:14px">
+    <div data-f="site_type"><label for="site_type">Type of location</label>
+      <select id="site_type"><option value="">Select…</option><option>Commercial building / suite</option><option>Medical or clinical facility</option><option>Gym / fitness facility</option><option>Hotel / resort</option><option>Team or training facility</option><option>Warehouse / storage</option><option>Residence</option><option>Other</option></select><div class="msg">Required</div></div>
+    <div><label for="floor">Where in the building?</label>
+      <select id="floor"><option value="ground">Ground floor</option><option value="elevator">Upper floor, freight elevator</option><option value="stairs">Upper floor, stairs only</option><option value="unsure">Not sure</option></select></div>
+    <div data-f="site_contact"><label for="site_contact">On-site contact name</label><input type="text" id="site_contact" maxlength="80"><div class="msg">Required</div></div>
+    <div data-f="site_phone"><label for="site_phone">On-site contact phone</label><input type="tel" id="site_phone" maxlength="30"><div class="msg">Enter a valid phone number</div></div>
+    <div><label for="site_email">On-site contact email <span class="opt">(optional)</span></label><input type="email" id="site_email" maxlength="120"></div>
+    <div><label for="hours">Receiving hours <span class="opt">(optional)</span></label><input type="text" id="hours" placeholder="e.g. Mon–Fri 8am–4pm" maxlength="80"></div>
+    <div><label for="door">Narrowest doorway or hallway on the path <span class="opt">(inches, if known)</span></label><input type="number" id="door" min="0" max="200" inputmode="decimal"></div>
+    <div><label for="dock">Loading dock available?</label>
+      <select id="dock"><option value="unsure">Not sure</option><option value="yes">Yes</option><option value="no">No, I need a liftgate truck</option></select></div>
+  </div>
+  <label class="chk"><input type="checkbox" id="appt"> <span>The site requires a delivery appointment or certificate of insurance.</span></label>
+  <div class="full" style="margin-top:10px"><label for="site_notes">Access or delivery notes <span class="opt">(optional)</span></label><textarea id="site_notes" maxlength="1000" placeholder="Parking, gate codes, tight turns, anything the carrier should know"></textarea></div>
+  <label class="chk"><input type="checkbox" id="elec"> <span>I understand all electrical work at the site is the customer's responsibility.</span></label>
+  <div class="msg" id="m_elec">Please confirm.</div>
+</fieldset>
+
+<fieldset>
+  <legend>6. Anything else?</legend>
+  <label for="notes">Questions or special requests <span class="opt">(optional)</span></label>
+  <textarea id="notes" maxlength="1500"></textarea>
+  <div class="hp" aria-hidden="true"><label>Leave blank<input type="text" id="hp" tabindex="-1" autocomplete="off"></label></div>
+  <label class="chk" style="margin-top:14px"><input type="checkbox" id="terms"> <span>I understand this is a pre-order request, not a final purchase. CTN-USA will email me a custom quote, and my order is not accepted until I accept that quote and either the 50% deposit is received or Brickhouse financing is approved.</span></label>
+  <div class="msg" id="m_terms">Please confirm.</div>
+</fieldset>
+
+<button class="go" id="submit" type="submit">Submit pre-order request</button>
+</form>
+
+<section id="done" aria-live="polite">
+  <h2>Thank you, your request is in.</h2>
+  <p>We're preparing your custom quote and will email it to <b id="d_email"></b> shortly.</p>
+  <div class="ref" id="d_ref"></div>
+  <p style="color:var(--mute);font-size:14px">Open the quote email and use the accept link to move forward. Check your spam folder if you don't see it within a few minutes. Questions? Call (904) 659-2442 or email sales@CTN-USA.com.</p>
+  <pre id="demo"></pre>
+</section>
+</main>
+<footer>Wavelength Holdings, LLC d/b/a CTN-USA · 1250 Imeson Park Blvd, Suite 514-516, Jacksonville, FL 32218 · (904) 659-2442 · sales@CTN-USA.com</footer>
+
+<script>
+/* ---------- CONFIG ---------- */
+// After deploying the intake function, paste its URL here. Left empty, the page runs in demo mode (nothing is sent).
+var INTAKE_URL = "https://ocgopivrkhroeiaoaiyy.supabase.co/functions/v1/preorder-intake";
+/* ---------------------------- */
+
+var $ = function(id){return document.getElementById(id)};
+var STATES = "AL AK AZ AR CA CO CT DE DC FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY".split(" ");
+["bill_state","site_state","tax_state"].forEach(function(id){
+  var s=$(id); s.innerHTML='<option value="">Select…</option>'+STATES.map(function(x){return '<option>'+x+'</option>'}).join('');
+});
+
+document.querySelectorAll("[data-q]").forEach(function(b){
+  b.addEventListener("click",function(){var i=$(b.dataset.q);i.value=Math.max(0,Math.min(50,(+i.value||0)+ +b.dataset.d))});
+});
+document.querySelectorAll('input[name=pay]').forEach(function(r){r.addEventListener("change",function(){
+  $("p_cash").classList.toggle("on",r.value==="cash"&&r.checked);
+  $("p_fin").classList.toggle("on",r.value==="financing"&&r.checked);
+})});
+$("bh_status").addEventListener("change",function(){$("bh_refwrap").style.display=this.value==="not_started"?"none":"block"});
+$("taxex").addEventListener("change",function(){$("p_tax").classList.toggle("on",this.checked)});
+$("same").addEventListener("change",function(){$("siteaddr").style.display=this.checked?"none":"grid"});
+
+function val(id){return ($(id).value||"").trim()}
+function setBad(key,bad){var el=document.querySelector('[data-f="'+key+'"]');if(el)el.classList.toggle("bad",bad)}
+function showMsg(id,bad){$(id).style.display=bad?"block":"none"}
+var phoneOk=function(v){return v.replace(/\D/g,"").length>=10};
+var emailOk=function(v){return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)};
+var zipOk=function(v){return /^\d{5}(-\d{4})?$/.test(v)};
+
+function validate(){
+  var bad=[];
+  function req(k,ok){setBad(k,!ok);if(!ok)bad.push(k)}
+  var vh1=+$("vh1").value||0, vh2=+$("vh2").value||0;
+  var prodBad=(vh1+vh2)<1; showMsg("m_products",prodBad); if(prodBad)bad.push("products");
+  var pay=document.querySelector("input[name=pay]:checked"); showMsg("m_pay",!pay); if(!pay)bad.push("pay");
+  ["first","last","title","company","entity","vertical","bill_street","bill_city","bill_state","site_type","site_contact"].forEach(function(k){req(k,!!val(k))});
+  req("email",emailOk(val("email"))); req("phone",phoneOk(val("phone"))); req("bill_zip",zipOk(val("bill_zip"))); req("site_phone",phoneOk(val("site_phone")));
+  var same=$("same").checked;
+  ["site_street","site_city","site_state"].forEach(function(k){req(k,same||!!val(k))});
+  req("site_zip",same||zipOk(val("site_zip")));
+  [["authorized","m_authorized"],["elec","m_elec"],["terms","m_terms"]].forEach(function(p){var b=!$(p[0]).checked;showMsg(p[1],b);if(b)bad.push(p[0])});
+  return bad;
+}
+
+$("f").addEventListener("submit",function(e){
+  e.preventDefault();
+  $("err").style.display="none";
+  var bad=validate();
+  if(bad.length){
+    $("err").textContent="Please fix the highlighted fields and try again.";$("err").style.display="block";
+    var first=document.querySelector(".bad, .msg[style*='block']"); if(first)first.scrollIntoView({behavior:"smooth",block:"center"});
+    return;
+  }
+  var same=$("same").checked, pay=document.querySelector("input[name=pay]:checked").value;
+  var payload={
+    items:[{sku:"oxypro-vh1",qty:+$("vh1").value||0},{sku:"oxypro-vh2",qty:+$("vh2").value||0}].filter(function(i){return i.qty>0}),
+    payment:{method:pay,
+      brickhouse_status: pay==="financing"?val("bh_status"):"",
+      brickhouse_ref: pay==="financing"?val("bh_ref"):""},
+    contact:{first:val("first"),last:val("last"),title:val("title"),email:val("email").toLowerCase(),phone:val("phone"),authorized:true},
+    company:{legal_name:val("company"),dba:val("dba"),website:val("website"),entity_type:val("entity"),industry:val("vertical"),
+      billing:{street:val("bill_street"),city:val("bill_city"),state:val("bill_state"),zip:val("bill_zip")},
+      tax_exempt:$("taxex").checked,tax_state:$("taxex").checked?val("tax_state"):"",tax_cert:$("taxex").checked?val("tax_cert"):""},
+    delivery:{same_as_billing:same,
+      address: same?{street:val("bill_street"),city:val("bill_city"),state:val("bill_state"),zip:val("bill_zip")}
+                   :{street:val("site_street"),city:val("site_city"),state:val("site_state"),zip:val("site_zip")},
+      location_type:val("site_type"),floor:val("floor"),dock:val("dock"),door_width_in:val("door"),receiving_hours:val("hours"),
+      appointment_required:$("appt").checked,site_contact:val("site_contact"),site_phone:val("site_phone"),site_email:val("site_email"),
+      notes:val("site_notes"),requested_date:val("timeframe"),install:val("install"),electrical_ack:true},
+    notes:val("notes"),
+    terms_ack:true,
+    hp:val("hp"),
+    source:location.href,
+    submitted_at:new Date().toISOString()
+  };
+  var btn=$("submit"); btn.disabled=true; btn.textContent="Submitting…";
+
+  function finish(ref,demo){
+    $("f").style.display="none"; document.querySelector(".steps").style.display="none";
+    $("d_email").textContent=payload.contact.email; $("d_ref").textContent="Reference: "+ref;
+    if(demo){$("demo").style.display="block";$("demo").textContent="DEMO MODE: nothing was sent. This is the payload the page will POST:\n\n"+JSON.stringify(payload,null,2)}
+    $("done").style.display="block"; window.scrollTo({top:0,behavior:"smooth"});
+  }
+  if(!INTAKE_URL){ setTimeout(function(){finish("DEMO-0000",true)},300); return; }
+  fetch(INTAKE_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)})
+    .then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j}})})
+    .then(function(x){
+      if(!x.ok||!x.j.ok) throw new Error((x.j&&x.j.error)||"Something went wrong.");
+      finish(x.j.reference,false);
+    })
+    .catch(function(err){
+      btn.disabled=false; btn.textContent="Submit pre-order request";
+      $("err").textContent=(err&&err.message?err.message:"We couldn't submit your request.")+" Please try again, or call (904) 659-2442.";
+      $("err").style.display="block"; window.scrollTo({top:0,behavior:"smooth"});
+    });
+});
+</script>
+</body>
+</html>
