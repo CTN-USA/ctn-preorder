@@ -216,9 +216,9 @@ footer p{max-width:860px;margin-top:12px}
 <header class="hero" id="top">
   <div class="wrap">
     <div class="copy">
-      <div class="eyebrow">OxyPro VH2 · World premiere</div>
+      <div class="eyebrow" id="eyebrow">OxyPro VH2 · World premiere</div>
       <h1 id="h1"><span class="grad">Be first in line</span> for the OxyPro&nbsp;VH2.</h1>
-      <p class="sub">The two-seat mild hyperbaric recovery lounge with on-board oxygen. A premium centerpiece your members and guests will book again and again.</p>
+      <p class="sub" id="sub">The two-seat mild hyperbaric recovery lounge with on-board oxygen. A premium centerpiece your members and guests will book again and again.</p>
       <div class="cta-row">
         <a class="btn btn-primary btn-lg pulse js-cta" data-loc="hero" href="/preorder">Pre-order your OxyPro now <span class="arr">→</span></a>
         <a class="btn btn-ghost js-watch" href="#film">▶ Watch the film</a>
@@ -398,9 +398,21 @@ footer p{max-width:860px;margin-top:12px}
   if(!attr||q.get("utm_source")){
     attr={src:q.get("utm_source")||(document.referrer?new URL(document.referrer).hostname:"direct"),
           medium:q.get("utm_medium")||"",campaign:q.get("utm_campaign")||"",
+          content:q.get("utm_content")||"",aud:"",
           referrer:(document.referrer||"").slice(0,160)};
-    ls("ctn_attr",JSON.stringify(attr));
   }
+  if(q.get("aud"))attr.aud=q.get("aud").toLowerCase().replace(/[^a-z]/g,"").slice(0,12);
+  if(q.get("utm_content"))attr.content=q.get("utm_content").slice(0,60);
+  ls("ctn_attr",JSON.stringify(attr));
+
+  // audience-matched message (ads link with ?aud=gym|studio|spa|team)
+  var AUD={
+    gym:["For gyms & fitness clubs","Add a premium, bookable recovery service your members will pay for. Two members per session, with no oxygen tanks to manage."],
+    studio:["For recovery & wellness studios","Add the hyperbaric lounge your clients will book again and again. Two guests per session, on-board oxygen, lounge-grade comfort."],
+    spa:["For spas, hotels & resorts","A private recovery lounge that feels like a suite, not a clinic. Two guests per session, on-board oxygen, no tanks to manage."],
+    team:["For teams & performance centers","Recovery that fits between training sessions, for two athletes at a time. On-board oxygen, dual-touchscreen control, built to run all day."]
+  };
+  if(AUD[attr.aud]){document.getElementById("eyebrow").textContent=AUD[attr.aud][0]+" · OxyPro VH2";document.getElementById("sub").textContent=AUD[attr.aud][1]}
 
   // headline A/B test (sticky per visitor). Force with ?v=A or ?v=B.
   var variant=(q.get("v")||"").toUpperCase(); if(variant!=="A"&&variant!=="B")variant=ls("ctn_var");
@@ -409,14 +421,15 @@ footer p{max-width:860px;margin-top:12px}
   if(variant==="B"){document.getElementById("h1").innerHTML='Reserve your <span class="grad">2027 OxyPro&nbsp;VH2</span> production slot.'}
 
   function send(event,extra){
-    var body=JSON.stringify({event:event,sid:sid,page:"landing",variant:variant,src:attr.src,medium:attr.medium,campaign:attr.campaign,referrer:attr.referrer,extra:extra||{}});
+    extra=extra||{}; if(attr.aud)extra.aud=attr.aud; if(attr.content)extra.content=attr.content;
+    var body=JSON.stringify({event:event,sid:sid,page:"landing",variant:variant,src:attr.src,medium:attr.medium,campaign:attr.campaign,referrer:attr.referrer,extra:extra});
     try{fetch(TRACK,{method:"POST",headers:{"Content-Type":"application/json"},body:body,keepalive:true,mode:"cors"}).catch(function(){})}catch(e){}
   }
   send("landing_view");
 
   // carry attribution into the pre-order form
   function href(h){var u=new URLSearchParams();u.set("sid",sid);u.set("v",variant);
-    if(attr.src)u.set("src",attr.src);if(attr.medium)u.set("med",attr.medium);if(attr.campaign)u.set("cmp",attr.campaign);
+    if(attr.src)u.set("src",attr.src);if(attr.medium)u.set("med",attr.medium);if(attr.campaign)u.set("cmp",attr.campaign);if(attr.content)u.set("ct",attr.content);if(attr.aud)u.set("aud",attr.aud);
     return h.split("?")[0]+"?"+u.toString()}
   [].forEach.call(document.querySelectorAll(".js-cta"),function(a){
     a.href=href(a.getAttribute("href"));

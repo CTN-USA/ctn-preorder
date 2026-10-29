@@ -221,11 +221,11 @@ var ATTR = (function(){
   var sid=q.get("sid"); try{sid=sid||localStorage.getItem("ctn_sid")}catch(e){}
   if(!sid){var r=new Uint8Array(12);crypto.getRandomValues(r);sid=Array.prototype.map.call(r,function(b){return("0"+b.toString(16)).slice(-2)}).join("")}
   var v=q.get("v"); try{v=v||localStorage.getItem("ctn_var")}catch(e){}
-  return {sid:sid,variant:v||"",src:q.get("src")||a.src||"direct",medium:q.get("med")||a.medium||"",campaign:q.get("cmp")||a.campaign||"",referrer:a.referrer||(document.referrer||"").slice(0,160)};
+  return {sid:sid,variant:v||"",src:q.get("src")||a.src||"direct",medium:q.get("med")||a.medium||"",campaign:q.get("cmp")||a.campaign||"",content:q.get("ct")||a.content||"",aud:q.get("aud")||a.aud||"",referrer:a.referrer||(document.referrer||"").slice(0,160)};
 })();
 function track(event,extra){
   try{fetch(TRACK_URL,{method:"POST",headers:{"Content-Type":"application/json"},keepalive:true,mode:"cors",
-    body:JSON.stringify({event:event,sid:ATTR.sid,page:"preorder",variant:ATTR.variant,src:ATTR.src,medium:ATTR.medium,campaign:ATTR.campaign,referrer:ATTR.referrer,extra:extra||{}})}).catch(function(){})}catch(e){}
+    body:JSON.stringify({event:event,sid:ATTR.sid,page:"preorder",variant:ATTR.variant,src:ATTR.src,medium:ATTR.medium,campaign:ATTR.campaign,referrer:ATTR.referrer,extra:Object.assign({aud:ATTR.aud,content:ATTR.content},extra||{})})}).catch(function(){})}catch(e){}
 }
 track("preorder_view");
 var _started=false;
