@@ -39,7 +39,7 @@ function usd(n){return "$"+Number(n).toLocaleString("en-US",{minimumFractionDigi
 function fmt(d){return d?new Date(d).toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"}):""}
 
 function render(s){
-  var rows=s.lines.map(function(l){return "<tr><td>"+esc(l.name)+"</td><td>"+l.qty+"</td><td>"+usd(l.unit_price*l.qty)+"</td></tr>"}).join("");
+  var rows=s.lines.map(function(l){return "<tr><td>"+esc(l.name)+"</td><td>"+l.qty+"</td><td>"+usd(l.amount!=null?l.amount:l.unit_price*l.qty)+"</td></tr>"}).join("");
   var terms=s.payment_method==="cash"
     ?"After you accept, we'll send a secure payment link or wire instructions for your <b>50% deposit</b>. Your order is confirmed when the deposit is received."
     :"After you accept, we'll guide you through <b>Brickhouse financing</b>. Your order is accepted once your financing is approved.";
