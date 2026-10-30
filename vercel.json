@@ -1,5 +1,10 @@
 {
   "cleanUrls": true,
+  "rewrites": [
+    { "source": "/sports", "destination": "/sports.html" },
+    { "source": "/studios", "destination": "/studios.html" },
+    { "source": "/clubs", "destination": "/clubs.html" }
+  ],
   "headers": [
     { "source": "/preorder-accept", "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }] },
     { "source": "/assets/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }] },
