@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>OxyPro for Pro & College Sports | Mild Hyperbaric Recovery | CTN USA</title>
-<meta name="description" content="Add a two-person mild hyperbaric recovery lounge for pro and college sports facilities. Model session revenue and reserve a Beyond Activ booth meeting.">
+<meta name="description" content="Plan roster recovery capacity for pro and college teams. VH2 seats two athletes. Reserve a Beyond Activ booth meeting.">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#070B14">
 <meta property="og:title" content="OxyPro for Pro & College Sports | Mild Hyperbaric Recovery | CTN USA">
-<meta property="og:description" content="Add a two-person mild hyperbaric recovery lounge for pro and college sports facilities. Model session revenue and reserve a Beyond Activ booth meeting.">
+<meta property="og:description" content="Plan roster recovery capacity for pro and college teams. VH2 seats two athletes. Reserve a Beyond Activ booth meeting.">
 <meta property="og:image" content="assets/hero.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -71,27 +71,56 @@ nav.top .links a.l:hover{color:#fff}
 .card .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(47,123,255,.25),rgba(61,214,255,.12));margin-bottom:14px;font-size:20px}
 .card p{color:var(--mute);font-size:15px;margin-top:8px}
 @media(max-width:900px){.cards{grid-template-columns:1fr}}
-.roi{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.roi-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;margin-top:36px;align-items:start}
-@media(max-width:900px){.roi-grid{grid-template-columns:1fr}}
-.roi-panel{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px}
-.roi-panel label{display:block;font-size:13px;font-weight:600;color:var(--mute);margin:14px 0 6px}
-.roi-panel label:first-child{margin-top:0}
-.roi-panel input,.roi-panel select,.form-card input,.form-card select,.form-card textarea{
+.plan{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.plan-grid{display:grid;grid-template-columns:minmax(280px,380px) 1fr;gap:22px;margin-top:32px;align-items:start}
+@media(max-width:980px){.plan-grid{grid-template-columns:1fr}}
+.plan-panel{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.plan-panel label{display:block;font-size:13px;font-weight:600;color:var(--mute);margin:14px 0 6px}
+.plan-panel label:first-child{margin-top:0}
+.plan-panel input,.plan-panel select,.form-card input,.form-card select,.form-card textarea{
   width:100%;font:inherit;padding:12px 14px;border:1px solid var(--line);border-radius:10px;
-  background:#0A1220;color:var(--ink)
+  background:#0A1220;color:var(--ink);transition:border-color .2s ease,box-shadow .2s ease
 }
-.roi-panel input:focus,.form-card input:focus,.form-card select:focus,.form-card textarea:focus{
+.plan-panel input:focus,.form-card input:focus,.form-card select:focus,.form-card textarea:focus{
   outline:2px solid var(--cyan);outline-offset:1px
 }
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:420px){.pair{grid-template-columns:1fr}}
 .hint{font-size:12px;color:#7A8BA6;margin-top:6px}
-.results{display:grid;gap:14px}
-.res{background:#0A1220;border:1px solid var(--line);border-radius:12px;padding:18px}
-.res .lbl{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
-.res .val{font-size:clamp(26px,3vw,36px);font-weight:800;margin-top:4px}
-.res .val.ok{color:var(--ok)}
-.cite{font-size:13px;color:var(--mute);margin-top:18px;line-height:1.5}
-.cite a{color:var(--cyan);text-decoration:underline}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:720px){.stats{grid-template-columns:1fr}}
+.res{background:#0A1220;border:1px solid var(--line);border-radius:12px;padding:16px 16px 14px;transition:border-color .35s ease}
+.res .lbl{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.res .val{font-size:clamp(26px,3vw,34px);font-weight:800;margin-top:4px;color:var(--ok)}
+.res.pulse .val{animation:flash .45s ease}
+@keyframes flash{0%{opacity:.25}100%{opacity:1}}
+.gauge{margin-top:14px;background:#0A1220;border:1px solid var(--line);border-radius:12px;padding:16px}
+.gauge-top{display:flex;justify-content:space-between;gap:12px;align-items:baseline;font-size:13px;font-weight:700}
+.gauge-top b{color:var(--cyan);font-size:18px}
+.gauge-track{height:12px;border-radius:999px;background:#162033;margin-top:10px;overflow:hidden}
+.gauge-fill{height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,var(--blue),var(--cyan));transition:width .55s cubic-bezier(.2,.8,.2,1)}
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-top:14px}
+@media(max-width:800px){.week{grid-template-columns:1fr}}
+.cal-day{background:#0A1220;border:1px solid var(--line);border-radius:12px;padding:10px;min-height:118px;transition:border-color .35s ease,transform .35s ease,background .35s ease}
+.cal-day.on{border-color:#2b4a85;transform:translateY(-2px)}
+.cal-day .dn{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.cal-day .tag{display:inline-block;margin-top:6px;font-size:11px;font-weight:700;color:var(--amber)}
+.wins{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.win{font-size:11px;font-weight:700;line-height:1.3;border-radius:8px;padding:6px 7px;animation:rise .4s ease}
+.win.post{background:rgba(255,176,32,.16);color:#FFD98A}
+.win.morn{background:rgba(61,214,255,.14);color:#B8F4FF}
+.win.travel{background:rgba(47,123,255,.18);color:#C9DBFF}
+.win.block{background:rgba(53,211,153,.14);color:#B8F0D6}
+.win.open{background:rgba(255,255,255,.04);color:var(--mute);font-weight:600}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.legend span{font-size:11px;font-weight:700;border-radius:999px;padding:5px 9px}
+.return-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:640px){.return-grid{grid-template-columns:1fr}}
+.return-card{background:#0A1220;border:1px solid var(--line);border-radius:12px;padding:14px;transition:border-color .25s ease,transform .25s ease}
+.return-card:hover{border-color:#2b4a85;transform:translateY(-2px)}
+.return-card h3{font-size:15px;margin-bottom:4px}
+.return-card p{color:var(--mute);font-size:13px;margin:0}
 .models{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:36px}
 @media(max-width:760px){.models{grid-template-columns:1fr}}
 .model{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px}
@@ -159,8 +188,8 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
   <a href="#top"><img src="assets/ctn-logo.png" alt="CTN"></a>
   <div class="links">
     <a class="l" href="#benefits">Benefits</a>
-    <a class="l" href="#wellbeing">Wellbeing ROI</a>
-    <a class="l" href="#roi">ROI calculator</a>
+    <a class="l" href="#return">Performance return</a>
+    <a class="l" href="#planner">Readiness planner</a>
     <a class="l" href="#models">VH1 / VH2</a>
     <a class="l" href="#lead">Pre-order</a>
     <a class="btn btn-primary" href="#lead" style="padding:11px 20px;font-size:15px;border-radius:11px">Reserve / pre-order</a>
@@ -173,12 +202,12 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
   <p class="sub">OxyPro VH2 puts two athletes side by side in a stainless-steel mild hyperbaric lounge at 1.5 ATA — engineered in Finland, supported factory-direct in the US. World premiere at Beyond Activ Americas, Booth 401.</p>
   <div class="cta-row">
     <a class="btn btn-primary btn-lg" href="#lead">Pre-order or request a quote <span>→</span></a>
-    <a class="btn btn-ghost" href="#roi">Model your ROI</a>
+    <a class="btn btn-ghost" href="#planner">Open the readiness planner</a>
   </div>
   <div class="micro">
     <span>No equipment price on this page — request a quote</span>
-    <span>VH1 &amp; VH2 only</span>
-    <span>FDA-safe wellness language</span>
+    <span>VH2 seats 2 · VH1 seats 1</span>
+    <span>Wellness and recovery support</span>
   </div>
 </div></div></section>
 
@@ -188,60 +217,110 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
   <div class="eyebrow">Why this vertical</div>
   <h2>Built for the training room, not a clinic.</h2>
   <p class="lead" style="margin-top:12px">Mild hyperbaric oxygen sessions support the body's natural recovery and everyday wellness. OxyPro is for general wellness and recovery use — not for diagnosing, treating, curing or preventing disease.</p>
-  <div class="cards"><div class="card"><div class="ic">🏟️</div><h3>Roster throughput</h3><p>Two-person VH2 sessions help training and recovery staff move more athletes through a premium recovery block without stacking single-person waits.</p></div><div class="card"><div class="ic">🇫🇮</div><h3>Hard-shell, daily use</h3><p>Stainless-steel chamber with climate control, intercom and dual controls — designed for high-utilization sports environments.</p></div><div class="card"><div class="ic">📋</div><h3>Easy for staff to run</h3><p>Calm, low-supervision sessions athletes can rest in between practices, travel days and congested schedules.</p></div><div class="card"><div class="ic">🔁</div><h3>Season-long support</h3><p>A repeatable wellness and recovery offering that supports how modern performance staff talk about load management — without medical claims.</p></div><div class="card"><div class="ic">🧳</div><h3>VH1 when space is tight</h3><p>Single-person VH1 hardshell for satellite rooms, smaller programs or overflow.</p></div><div class="card"><div class="ic">📍</div><h3>See it in Dallas</h3><p>Press preview and booth demos at Beyond Activ Americas, Hilton Anatole, Booth 401, Nov 12–13.</p></div></div>
+  <div class="cards"><div class="card"><div class="ic">🏟️</div><h3>Roster throughput</h3><p>Two-person VH2 sessions help training and recovery staff move more athletes through a premium recovery block without stacking single-person waits.</p></div><div class="card"><div class="ic">🇫🇮</div><h3>Hard-shell, daily use</h3><p>Stainless-steel chamber with climate control, intercom and dual controls — designed for high-utilization sports environments.</p></div><div class="card"><div class="ic">📋</div><h3>Easy for staff to run</h3><p>Calm, low-supervision sessions athletes can rest in between practices, travel days and congested schedules.</p></div><div class="card"><div class="ic">🔁</div><h3>Season-long rhythm</h3><p>A repeatable wellness block staff can place between games, travel, and heavy training. It supports recovery routines across a season.</p></div><div class="card"><div class="ic">🧳</div><h3>VH1 when space is tight</h3><p>Single-person VH1 hardshell for satellite rooms, smaller programs or overflow.</p></div><div class="card"><div class="ic">📍</div><h3>See it in Dallas</h3><p>Press preview and booth demos at Beyond Activ Americas, Hilton Anatole, Booth 401, Nov 12–13.</p></div></div>
 </div></section>
 
 
-<section id="wellbeing" class="well" style="padding-top:0"><div class="wrap">
-  <div class="eyebrow">Non-financial ROI</div>
-  <h2>The ROI that isn't on a P&L.</h2>
-  <p class="lead" style="margin-top:12px">For performance staff, the return is also readiness, recovery between blocks, and an athlete experience that feels premium — not clinical. These are wellness and recovery-support outcomes many operators care about; they are not medical claims.</p>
-  <div class="score"><span>Readiness</span><span>Between-block recovery</span><span>Athlete satisfaction</span><span>Staff wellness</span><span>Recruiting signal</span></div>
-  <div class="well-grid"><div class="well-card"><div class="mark">⚡</div><div><h3>Readiness between sessions</h3><p>A calm mild-hyperbaric block athletes can use between practices, travel days, and congested weeks — supporting how they feel heading into the next session.</p></div></div><div class="well-card"><div class="mark">🔄</div><div><h3>Faster bounce-back feel</h3><p>Many users report feeling fresher after oxygen-enriched, low-pressure sessions. That is recovery support and revitalization, not a medical treatment.</p></div></div><div class="well-card"><div class="mark">😴</div><div><h3>Rest and relaxation</h3><p>Quiet, climate-controlled time that supports relaxation and the kind of downtime athletes actually take.</p></div></div><div class="well-card"><div class="mark">⭐</div><div><h3>Athlete experience</h3><p>A lounge-grade hard-shell session two teammates can share (VH2) — elevating the training-room amenity without looking like a clinic.</p></div></div><div class="well-card"><div class="mark">🤝</div><div><h3>Staff and culture</h3><p>A visible investment in athlete and staff wellbeing that supports retention conversations and program pride.</p></div></div><div class="well-card"><div class="mark">🏅</div><div><h3>Program differentiation</h3><p>A Finnish-engineered mild hyperbaric lounge signals a modern recovery stack for recruits, alumni, and leadership tours.</p></div></div></div>
-  <p class="well-note">OxyPro supports general recovery and wellbeing. It is not intended to diagnose, treat, cure, or prevent any disease.</p>
-</div></section>
+<section class="plan" id="planner"><div class="wrap">
+  <div class="eyebrow">For performance staff</div>
+  <h2>Readiness planner for <span class="grad">your roster</span>.</h2>
+  <p class="lead" style="margin-top:12px">Built for pro and college teams, not a walk-in menu. Enter the week your staff actually run. VH2 seats 2 athletes per session. VH1 seats 1. Nothing here is a price, a medical claim, or a promised result.</p>
+  <div class="plan-grid">
+    <div class="plan-panel">
+      <label for="roster">Roster size</label>
+      <input type="number" id="roster" min="1" max="200" step="1" value="32">
+      <p class="hint">Athletes you want the room to serve.</p>
 
-<section class="roi" id="roi"><div class="wrap">
-  <div class="eyebrow">Interactive model</div>
-  <h2>Estimate session revenue with <span class="grad">your</span> numbers.</h2>
-  <p class="lead" style="margin-top:12px">Enter the price you would charge per person-session, how many sessions you run per day, and days open. Equipment cost is never prefilled — leave it blank or request a quote. Example defaults are labeled and sourced from public market research.</p>
-  <div class="roi-grid">
-    <div class="roi-panel">
-      <label for="price">Your price per person-session (USD)</label>
-      <input type="number" id="price" min="0" step="5" value="150">
-      <p class="hint">Example default $150 = illustrative US wellness HBOT median (~$150 across 22 published venue menus, Tendground directory, Oct 2026). Replace with your menu price.</p>
+      <label for="games">Games per week</label>
+      <select id="games">
+        <option value="0">0 games</option>
+        <option value="1" selected>1 game</option>
+        <option value="2">2 games</option>
+        <option value="3">3+ games</option>
+      </select>
 
-      <label for="sessions">Sessions per open day (chamber starts)</label>
-      <input type="number" id="sessions" min="0" step="1" value="6">
-      <p class="hint">Example assumption for this vertical — edit freely.</p>
+      <div class="pair">
+        <div>
+          <label for="travel">Travel days per week</label>
+          <input type="number" id="travel" min="0" max="7" step="1" value="1">
+        </div>
+        <div>
+          <label for="heavy">Heavy training blocks per week</label>
+          <input type="number" id="heavy" min="0" max="7" step="1" value="4">
+        </div>
+      </div>
 
-      <label for="occupancy">Average people per session</label>
-      <input type="number" id="occupancy" min="1" max="2" step="0.1" value="2">
-      <p class="hint">VH1 seats 1 person. VH2 seats 2 people, side by side.</p>
+      <div class="pair">
+        <div>
+          <label for="vh2">VH2 chambers (1–3)</label>
+          <input type="number" id="vh2" min="1" max="3" step="1" value="1">
+          <p class="hint">Each VH2 seats 2.</p>
+        </div>
+        <div>
+          <label for="vh1">Optional VH1 count</label>
+          <input type="number" id="vh1" min="0" max="6" step="1" value="0">
+          <p class="hint">Each VH1 seats 1.</p>
+        </div>
+      </div>
 
-      <label for="days">Days open per week</label>
-      <input type="number" id="days" min="1" max="7" step="1" value="6">
-
-      <label for="weeks">Weeks operating per year</label>
-      <input type="number" id="weeks" min="1" max="52" step="1" value="50">
-
-      <label for="uplift">Optional monthly membership / dues uplift (USD)</label>
-      <input type="number" id="uplift" min="0" step="100" value="0">
-      <p class="hint">Clubs/studios: extra dues or membership attach you attribute to this amenity. Leave 0 if unused.</p>
-
-      <label for="equip">Optional: your assumed equipment investment (USD)</label>
-      <input type="number" id="equip" min="0" step="1000" value="" placeholder="Leave blank — or request a quote">
-      <p class="hint">Example only if you enter one. Leave blank to skip payback, or use a figure from your quote.</p>
+      <div class="pair">
+        <div>
+          <label for="minutes">Session length (minutes)</label>
+          <input type="number" id="minutes" min="15" max="180" step="5" value="60">
+          <p class="hint">Example length — edit to match how your staff run a block.</p>
+        </div>
+        <div>
+          <label for="hours">Facility hours per day</label>
+          <input type="number" id="hours" min="1" max="16" step="0.5" value="8">
+          <p class="hint">Hours the recovery room is open.</p>
+        </div>
+      </div>
     </div>
-    <div class="results">
-      <div class="res"><div class="lbl">Est. weekly session revenue</div><div class="val ok" id="r-week">—</div></div>
-      <div class="res"><div class="lbl">Est. annual session revenue</div><div class="val ok" id="r-year">—</div></div>
-      <div class="res"><div class="lbl">+ Annual membership uplift</div><div class="val" id="r-uplift">—</div></div>
-      <div class="res"><div class="lbl">Combined annual estimate</div><div class="val ok" id="r-total">—</div></div>
-      <div class="res"><div class="lbl">Simple payback (if you entered equipment)</div><div class="val" id="r-payback">Enter equipment or request a quote</div></div>
-      <p class="cite">Sports facilities often bill internal cost centers or membership programs rather than walk-in sessions. Use your own internal transfer price, athlete co-pay, or program fee.<br><br>*Public sources for example session prices (not CTN pricing): <a href="https://www.tendground.com/wellness/recovery-session-prices" target="_blank" rel="noopener">Tendground recovery session price survey</a> (median hyperbaric $150, range $50–$300, 22 US venues, Oct 2026); also see published menus such as Santa Cruz Athletic Club ($150/60 min) and clinic cash-pay ranges summarized by <a href="https://hyperbaricfinder.com/blog/hyperbaric-oxygen-therapy-cost-2026" target="_blank" rel="noopener">HBOT Finder 2026</a>. This calculator is an illustration only — not a guarantee of revenue.</p>
+
+    <div>
+      <div class="plan-panel" id="return">
+        <div class="eyebrow">Performance return</div>
+        <h3 style="font-size:22px;margin-bottom:8px">What staff are actually buying time for.</h3>
+        <p class="hint" style="margin-bottom:12px">Wellness and recovery support only. Many athletes report how they feel. This is not a treatment claim and not a measured improvement.</p>
+        <div class="return-grid">
+          <div class="return-card"><h3>Readiness</h3><p>A calm block that supports how athletes feel heading into the next session.</p></div>
+          <div class="return-card"><h3>Feeling fresh</h3><p>Many athletes report feeling fresher between games and heavy training blocks.</p></div>
+          <div class="return-card"><h3>Rest and relaxation</h3><p>Quiet, climate-controlled time that supports rest inside the training facility.</p></div>
+          <div class="return-card"><h3>Routine consistency</h3><p>A repeatable window staff can put on the week, so recovery is a habit rather than a scramble.</p></div>
+          <div class="return-card"><h3>Athlete experience and recruiting</h3><p>Two teammates can share a VH2. A lounge-grade room is part of the experience recruits notice on a tour.</p></div>
+          <div class="return-card"><h3>Staff and culture</h3><p>Gives performance staff a visible way to support athlete wellbeing and the program around them.</p></div>
+        </div>
+      </div>
     </div>
   </div>
+
+  <div class="stats" style="margin-top:18px">
+    <div class="res" id="stat-day"><div class="lbl">Athlete sessions / day</div><div class="val" id="out-day">—</div></div>
+    <div class="res" id="stat-week"><div class="lbl">Athlete sessions / week</div><div class="val" id="out-week">—</div></div>
+    <div class="res" id="stat-each"><div class="lbl">Touches per athlete / week</div><div class="val" id="out-each">—</div></div>
+  </div>
+  <p class="hint" id="out-math" style="margin-top:8px"></p>
+
+  <div class="gauge" aria-live="polite">
+    <div class="gauge-top"><span>Roster coverage this week</span><b id="cov-label">—</b></div>
+    <div class="gauge-track" role="img" aria-label="Roster coverage"><div class="gauge-fill" id="cov-fill"></div></div>
+    <p class="hint" id="cov-note"></p>
+  </div>
+
+  <div style="margin-top:22px">
+    <div class="eyebrow">Weekly recovery calendar</div>
+    <h3 style="font-size:22px">Where the windows land.</h3>
+    <p class="hint">Game days get a post-game window and the next morning. Travel days and heavy blocks get their own windows. Capacity still uses your hours every day of the week.</p>
+    <div class="week" id="week"></div>
+    <div class="legend">
+      <span class="win post">Post-game</span>
+      <span class="win morn">Next morning</span>
+      <span class="win travel">Travel day</span>
+      <span class="win block">After heavy block</span>
+      <span class="win open">Open block</span>
+    </div>
+  </div>
+  <p class="well-note">OxyPro supports general recovery and wellbeing. It is not intended to diagnose, treat, cure, or prevent any disease. This planner is a scheduling illustration for staff, not a guarantee of how any athlete will feel.</p>
 </div></section>
 
 <section id="models"><div class="wrap">
@@ -288,7 +367,7 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
       <div class="form-grid">
         <div class="field"><label for="name">Full name *</label><input id="name" name="name" required autocomplete="name"></div>
         <div class="field"><label for="title">Title *</label><input id="title" name="title" required autocomplete="organization-title"></div>
-        <div class="field"><label for="company">Company / facility *</label><input id="company" name="company" required autocomplete="organization"></div>
+        <div class="field"><label for="company">Team / department *</label><input id="company" name="company" required autocomplete="organization"></div>
         <div class="field"><label for="facility">Facility type *</label><select id="facility" name="facility" required><option value="">Select…</option><option>Pro sports facility / team</option>
 <option>College / university athletics</option>
 <option>Olympic / national training center</option>
@@ -309,7 +388,7 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
           <option>No — follow up after the show</option>
           <option>Not attending — schedule a remote intro</option>
         </select></div>
-        <div class="field full"><label for="notes">Notes (optional)</label><textarea id="notes" name="notes" rows="3" maxlength="1000" placeholder="Footprint, timeline, financing interest, etc."></textarea></div>
+        <div class="field full"><label for="notes">Notes for performance staff (optional)</label><textarea id="notes" name="notes" rows="3" maxlength="1000" placeholder="Roster size, room footprint, timeline, or questions about the readiness planner"></textarea></div>
       </div>
       <label class="chk"><input type="checkbox" id="consent" required> <span>I agree CTN USA may contact me about OxyPro. This is not a final purchase. Wellness use only — not a medical device claim.</span></label>
       <div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap">
@@ -406,45 +485,91 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
     } catch(e){}
   });
 
-  function money(n){
+  var DAYS = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+  function clamp(n, lo, hi){ n = Math.floor(n); if (n < lo) return lo; if (n > hi) return hi; return n; }
+  function fmt(n){
     if (!isFinite(n)) return "—";
-    return "$" + Math.round(n).toLocaleString("en-US");
+    var r = Math.round(n * 10) / 10;
+    return (Math.abs(r - Math.round(r)) < 0.05 ? String(Math.round(r)) : r.toFixed(1));
   }
-  function calc(){
-    var price = +document.getElementById("price").value || 0;
-    var sessions = +document.getElementById("sessions").value || 0;
-    var occ = +document.getElementById("occupancy").value || 1;
-    var days = +document.getElementById("days").value || 0;
-    var weeks = +document.getElementById("weeks").value || 0;
-    var uplift = +document.getElementById("uplift").value || 0;
-    var equip = document.getElementById("equip").value;
-    var weekly = price * sessions * occ * days;
-    var annual = weekly * weeks;
-    var upliftY = uplift * 12;
-    var total = annual + upliftY;
-    document.getElementById("r-week").textContent = money(weekly);
-    document.getElementById("r-year").textContent = money(annual);
-    document.getElementById("r-uplift").textContent = money(upliftY);
-    document.getElementById("r-total").textContent = money(total);
-    var pb = document.getElementById("r-payback");
-    if (equip === "" || equip === null) {
-      pb.textContent = "Enter equipment or request a quote";
-      pb.className = "val";
-    } else {
-      var e = +equip || 0;
-      if (total <= 0) { pb.textContent = "Add revenue assumptions"; pb.className = "val"; }
-      else {
-        var years = e / total;
-        pb.textContent = years.toFixed(1) + " years (simple)";
-        pb.className = "val ok";
-      }
+  function placeCount(count, prefer, blocked){
+    var used = {}, chosen = [], i;
+    blocked.forEach(function(d){ used[d] = true; });
+    prefer.forEach(function(d){
+      if (chosen.length >= count || used[d]) return;
+      used[d] = true; chosen.push(d);
+    });
+    for (i = 0; i < 7 && chosen.length < count; i++){
+      if (!used[i]){ used[i] = true; chosen.push(i); }
     }
+    return chosen;
   }
-  ["price","sessions","occupancy","days","weeks","uplift","equip"].forEach(function(id){
+  function plan(){
+    var roster = Math.max(1, Math.floor(+document.getElementById("roster").value || 1));
+    var gameN = document.getElementById("games").value === "3" ? 3 : Math.max(0, Math.floor(+document.getElementById("games").value || 0));
+    var travelN = clamp(+document.getElementById("travel").value || 0, 0, 7);
+    var heavyN = clamp(+document.getElementById("heavy").value || 0, 0, 7);
+    var vh2 = clamp(+document.getElementById("vh2").value || 1, 1, 3);
+    var vh1 = clamp(+document.getElementById("vh1").value || 0, 0, 6);
+    var mins = Math.max(15, Math.min(180, Math.floor(+document.getElementById("minutes").value || 60)));
+    var hours = Math.max(1, Math.min(16, +document.getElementById("hours").value || 8));
+    document.getElementById("vh2").value = vh2;
+    document.getElementById("vh1").value = vh1;
+
+    var starts = Math.floor((hours * 60) / mins);
+    var seats = vh2 * 2 + vh1;
+    var perDay = starts * seats;
+    var perWeek = perDay * 7;
+    var each = perWeek / roster;
+
+    ["stat-day","stat-week","stat-each"].forEach(function(id){
+      var el = document.getElementById(id);
+      el.classList.remove("pulse");
+      void el.offsetWidth;
+      el.classList.add("pulse");
+    });
+    document.getElementById("out-day").textContent = String(perDay);
+    document.getElementById("out-week").textContent = String(perWeek);
+    document.getElementById("out-each").textContent = fmt(each);
+    document.getElementById("out-math").textContent = starts
+      ? (starts + " chamber start" + (starts === 1 ? "" : "s") + " per day × " + seats + " seat" + (seats === 1 ? "" : "s") + " (" + vh2 + " VH2 × 2" + (vh1 ? " + " + vh1 + " VH1 × 1" : "") + "). The room is counted all 7 days at " + hours + " hours.")
+      : "That session is longer than the hours available, so no full block fits in the day.";
+
+    var covered = Math.min(roster, perWeek);
+    var pct = Math.round((covered / roster) * 100);
+    document.getElementById("cov-label").textContent = pct + "%";
+    document.getElementById("cov-fill").style.width = pct + "%";
+    var extra = perWeek - roster;
+    document.getElementById("cov-note").textContent = extra >= 0
+      ? "Every athlete can be scheduled at least once this week" + (extra > 0 ? ", with " + extra + " extra athlete-sessions left over." : ".")
+      : covered + " of " + roster + " athletes can be scheduled at least once. The rest of the roster waits for another week or a longer day.";
+
+    var gameDays = gameN === 1 ? [5] : gameN === 2 ? [2, 5] : gameN >= 3 ? [1, 4, 5] : [];
+    var beforeGames = gameDays.map(function(d){ return (d + 6) % 7; });
+    var travelDays = placeCount(travelN, beforeGames.concat([6, 0, 4, 3, 2, 1, 5]), gameDays);
+    var heavyDays = placeCount(heavyN, [1, 2, 3, 4, 0, 6, 5], gameDays);
+    var morn = {};
+    gameDays.forEach(function(d){ morn[(d + 1) % 7] = true; });
+
+    var html = DAYS.map(function(name, i){
+      var wins = [];
+      if (gameDays.indexOf(i) >= 0) wins.push('<span class="win post">Post-game window</span>');
+      if (morn[i]) wins.push('<span class="win morn">Next morning</span>');
+      if (travelDays.indexOf(i) >= 0) wins.push('<span class="win travel">Travel-day window</span>');
+      if (heavyDays.indexOf(i) >= 0) wins.push('<span class="win block">After heavy block</span>');
+      if (!wins.length) wins.push('<span class="win open">Open recovery block</span>');
+      var tag = gameDays.indexOf(i) >= 0 ? "Game day" : (travelDays.indexOf(i) >= 0 ? "Travel" : (heavyDays.indexOf(i) >= 0 ? "Heavy block" : (morn[i] ? "Next morning" : "Open")));
+      var on = wins.length > 1 || gameDays.indexOf(i) >= 0;
+      return '<div class="cal-day' + (on ? " on" : "") + '"><div class="dn">' + name + '</div><div class="tag">' + tag + '</div><div class="wins">' + wins.join("") + '</div></div>';
+    }).join("");
+    document.getElementById("week").innerHTML = html;
+  }
+  ["roster","games","travel","heavy","vh2","vh1","minutes","hours"].forEach(function(id){
     var el = document.getElementById(id);
-    if (el) el.addEventListener("input", calc);
+    if (el) el.addEventListener("input", plan);
+    if (el) el.addEventListener("change", plan);
   });
-  calc();
+  plan();
 
   var form = document.getElementById("lead-form");
   var btn = document.getElementById("submit");
