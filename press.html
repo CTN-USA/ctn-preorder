@@ -75,6 +75,26 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--mute);fo
 footer .inner{max-width:1180px;margin:0 auto;padding:0 20px}
 footer a{color:var(--cyan);text-decoration:none}
 </style>
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<!-- LinkedIn Insight Tag -->
+<script type="text/javascript">
+_linkedin_partner_id = "11243561";
+window._linkedin_partner_id = "11243561";
+window.LINKEDIN_PARTNER_ID = "11243561";
+window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+</script>
+<script type="text/javascript">
+(function(l) {
+if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};
+window.lintrk.q=[]}
+var s = document.getElementsByTagName("script")[0];
+var b = document.createElement("script");
+b.type = "text/javascript";b.async = true;
+b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+s.parentNode.insertBefore(b, s);})(window.lintrk);
+</script>
 </head>
 <body>
 <nav class="top">
@@ -229,5 +249,39 @@ footer a{color:var(--cyan);text-decoration:none}
     <div>Wavelength Holdings, LLC d/b/a CTN-USA · Jacksonville, FL · <a href="mailto:dave@ctn-usa.com">dave@ctn-usa.com</a> · (904) 257-3322</div>
   </div>
 </footer>
+<script>
+(function(){
+  var TRACK="https://ocgopivrkhroeiaoaiyy.supabase.co/functions/v1/track";
+  function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
+  function rid(){var a=new Uint8Array(12);(window.crypto||window.msCrypto).getRandomValues(a);return Array.prototype.map.call(a,function(b){return("0"+b.toString(16)).slice(-2)}).join("")}
+  var sid=ls("ctn_sid")||rid(); ls("ctn_sid",sid);
+
+  // first-touch attribution (UTMs / referrer), kept for the whole visit
+  var q=new URLSearchParams(location.search);
+  var attr=null; try{attr=JSON.parse(ls("ctn_attr")||"null")}catch(e){}
+  // saved campaign tags expire after 24h so an old ad click cannot be credited to a later visit
+  if(attr&&(!attr.ts||Date.now()-attr.ts>86400000))attr=null;
+  if(!attr||q.get("utm_source")){
+    attr={src:q.get("utm_source")||(document.referrer?new URL(document.referrer).hostname:"direct"),
+          medium:q.get("utm_medium")||"",campaign:q.get("utm_campaign")||"",
+          content:q.get("utm_content")||"",aud:"",
+          referrer:(document.referrer||"").slice(0,160)};
+  }
+  if(q.get("aud"))attr.aud=q.get("aud").toLowerCase().replace(/[^a-z]/g,"").slice(0,12);
+  if(q.get("utm_content"))attr.content=q.get("utm_content").slice(0,60);
+  if(!attr.ts||q.get("utm_source"))attr.ts=Date.now();
+  ls("ctn_attr",JSON.stringify(attr));
+
+  function send(event,extra){
+    extra=extra||{}; if(attr.aud)extra.aud=attr.aud; if(attr.content)extra.content=attr.content;
+    var body=JSON.stringify({event:event,sid:sid,page:"press",variant:"",src:attr.src,medium:attr.medium,campaign:attr.campaign,referrer:attr.referrer,extra:extra});
+    try{fetch(TRACK,{method:"POST",headers:{"Content-Type":"application/json"},body:body,keepalive:true,mode:"cors"}).catch(function(){})}catch(e){}
+  }
+  send("press_view");
+})();
+</script>
+<noscript>
+<img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=11243561&fmt=gif" />
+</noscript>
 </body>
 </html>
