@@ -388,6 +388,12 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
           <option>No — follow up after the show</option>
           <option>Not attending — schedule a remote intro</option>
         </select></div>
+        <div class="field full"><label for="street">Delivery or company street address *</label><input id="street" name="street" required autocomplete="address-line1" maxlength="120"></div>
+        <div class="field"><label for="city">City *</label><input id="city" name="city" required autocomplete="address-level2" maxlength="60"></div>
+        <div class="field"><label for="state">State (2-letter) *</label><input id="state" name="state" required autocomplete="address-level1" maxlength="2" style="text-transform:uppercase"></div>
+        <div class="field"><label for="zip">ZIP *</label><input id="zip" name="zip" required autocomplete="postal-code" inputmode="numeric" maxlength="10"></div>
+        <div class="field"><label for="qty">Quantity</label><select id="qty" name="qty"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+        <div class="field full" style="margin-top:-6px"><small style="color:#6b7b86">We use the address to estimate shipping on your quote.</small></div>
         <div class="field full"><label for="notes">Notes for performance staff (optional)</label><textarea id="notes" name="notes" rows="3" maxlength="1000" placeholder="Roster size, room footprint, timeline, or questions about the readiness planner"></textarea></div>
       </div>
       <label class="chk"><input type="checkbox" id="consent" required> <span>I agree CTN USA may contact me about OxyPro. This is not a final purchase. Wellness use only — not a medical device claim.</span></label>
@@ -591,6 +597,13 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
       return;
     }
 
+    var addrOk = ["street","city","state","zip"].every(function(id){ return document.getElementById(id).value.trim(); }) && /^\d{5}(-\d{4})?$/.test(document.getElementById("zip").value.trim()) && /^[A-Za-z]{2}$/.test(document.getElementById("state").value.trim());
+    if (!addrOk) {
+      msg.className = "form-msg err";
+      msg.textContent = "Please enter a complete delivery or company address (street, city, 2-letter state, ZIP) so we can estimate shipping.";
+      return;
+    }
+
     var payload = {
       lead_type: "linkedin_vertical_lead",
       type: "linkedin_vertical_lead",
@@ -620,6 +633,13 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
         notesUser ? ("Customer notes: " + notesUser) : ""
       ].filter(Boolean).join(" | "),
       attribution: ATTR,
+      address: {
+        street: document.getElementById("street").value.trim(),
+        city: document.getElementById("city").value.trim(),
+        state: document.getElementById("state").value.trim().toUpperCase(),
+        zip: document.getElementById("zip").value.trim()
+      },
+      quantity: parseInt(document.getElementById("qty").value, 10) || 1,
       utm: {
         utm_source: ATTR.src,
         utm_medium: ATTR.medium,

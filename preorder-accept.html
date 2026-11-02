@@ -40,7 +40,10 @@ function fmt(d){return d?new Date(d).toLocaleDateString("en-US",{month:"long",da
 
 function render(s){
   var rows=s.lines.map(function(l){return "<tr><td>"+esc(l.name)+"</td><td>"+l.qty+"</td><td>"+usd(l.amount!=null?l.amount:l.unit_price*l.qty)+"</td></tr>"}).join("");
-  var terms=s.payment_method==="cash"
+  var pm=s.payment_method;
+  var terms=pm==="tbd"
+    ?"After you accept, we'll follow up to confirm details and arrange payment (a secure payment link or wire instructions, or financing options). Your order is not final until payment terms are confirmed."
+    :pm==="cash"
     ?"After you accept, we'll send a secure payment link or wire instructions for your <b>50% deposit</b>. Your order is confirmed when the deposit is received."
     :"After you accept, we'll guide you through <b>Brickhouse financing</b>. Your order is accepted once your financing is approved.";
   var head="<h1>Quote "+esc(s.number)+"</h1><div class='mute'>Prepared for "+esc(s.company)+" · valid until "+fmt(s.expires_at)+"</div>"+
@@ -48,13 +51,15 @@ function render(s){
     "<div class='tot'><span>Equipment total</span><span>"+usd(s.total)+"</span></div>"+
     "<div class='mute' style='margin-top:6px'>Sales tax and freight are confirmed on the order.</div>";
   if(s.accepted){
-    c.innerHTML=head+"<div class='note'><b class='ok'>Quote accepted. Thank you!</b><br>"+(s.payment_method==="cash"
+    c.innerHTML=head+"<div class='note'><b class='ok'>Quote accepted. Thank you!</b><br>"+(pm==="tbd"
+      ?"We'll be in touch shortly to confirm details and arrange payment."
+      :pm==="cash"
       ?"We'll email your payment link or wire instructions shortly."
       :"We'll be in touch shortly to start your Brickhouse financing.")+"</div>"; return;
   }
   if(s.expired){ c.innerHTML=head+"<div class='note'><b class='err'>This quote has expired.</b> Call (904) 659-2442 or email sales@CTN-USA.com for a refreshed quote.</div>"; return; }
   c.innerHTML=head+"<div class='note'>"+terms+"</div>"+
-    "<label style='display:flex;gap:10px;font-size:14px;margin:14px 0'><input type='checkbox' id='ag' style='width:18px;height:18px;margin-top:3px'> <span>I'm authorized to accept this quote for "+esc(s.company)+" and understand my order is not final until the "+(s.payment_method==="cash"?"deposit is received":"Brickhouse financing is approved")+".</span></label>"+
+    "<label style='display:flex;gap:10px;font-size:14px;margin:14px 0'><input type='checkbox' id='ag' style='width:18px;height:18px;margin-top:3px'> <span>I'm authorized to accept this quote for "+esc(s.company)+" and understand my order is not final until the "+(pm==="tbd"?"payment terms are confirmed":pm==="cash"?"deposit is received":"Brickhouse financing is approved")+".</span></label>"+
     "<button id='go'>Accept this quote</button><div id='e' class='err' style='margin-top:10px;font-size:14px'></div>";
   document.getElementById("go").onclick=function(){
     if(!document.getElementById("ag").checked){document.getElementById("e").textContent="Please check the box to confirm.";return}
