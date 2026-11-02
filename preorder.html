@@ -237,6 +237,7 @@ var TRACK_URL = "https://ocgopivrkhroeiaoaiyy.supabase.co/functions/v1/track";
 var ATTR = (function(){
   var q=new URLSearchParams(location.search), a={};
   try{a=JSON.parse(localStorage.getItem("ctn_attr")||"{}")||{}}catch(e){}
+  if(!a.ts||Date.now()-a.ts>86400000)a={}; // saved tags expire after 24h
   var sid=q.get("sid"); try{sid=sid||localStorage.getItem("ctn_sid")}catch(e){}
   if(!sid){var r=new Uint8Array(12);crypto.getRandomValues(r);sid=Array.prototype.map.call(r,function(b){return("0"+b.toString(16)).slice(-2)}).join("")}
   var v=q.get("v"); try{v=v||localStorage.getItem("ctn_var")}catch(e){}

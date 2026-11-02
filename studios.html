@@ -320,7 +320,7 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
       <label class="chk"><input type="checkbox" id="consent" required> <span>I agree CTN USA may contact me about OxyPro. This is not a final purchase. Wellness use only — not a medical device claim.</span></label>
       <div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap">
         <button class="btn btn-primary" type="submit" id="submit">Submit interest</button>
-        <a class="btn btn-ghost" href="/preorder?utm_source=linkedin&utm_medium=paid&utm_campaign=oxypro_preorder_ba2026&utm_content=studios" target="_blank" rel="noopener">Or open full pre-order form →</a>
+        <a class="btn btn-ghost" href="/preorder" target="_blank" rel="noopener">Or open full pre-order form →</a>
       </div>
       <div class="form-msg" id="form-msg"></div>
       <p class="hint" style="margin-top:16px">Leads post to the same CTN pre-order intake used by <code>/preorder</code>. Soft interest only — full quote still uses 50% deposit or Brickhouse approval. US market only.</p>
@@ -363,18 +363,19 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
 
   var ATTR = {
     sid: sid,
-    src: q.get("src") || q.get("utm_source") || "linkedin",
-    medium: q.get("med") || q.get("utm_medium") || "paid",
-    campaign: q.get("cmp") || q.get("utm_campaign") || "oxypro_preorder_ba2026",
+    src: q.get("src") || q.get("utm_source") || "direct",
+    medium: q.get("med") || q.get("utm_medium") || "none",
+    campaign: q.get("cmp") || q.get("utm_campaign") || "oxypro_vertical_direct",
     content: q.get("ct") || q.get("utm_content") || vertical,
     aud: q.get("aud") || "",
     referrer: (document.referrer || "").slice(0, 160),
-    utm_term: q.get("utm_term") || q.get("term") || ""
+    utm_term: q.get("utm_term") || q.get("term") || "",
+    via: (q.get("src") || q.get("utm_source")) ? "url" : "none"
   };
   try {
     localStorage.setItem("ctn_attr", JSON.stringify({
       src: ATTR.src, medium: ATTR.medium, campaign: ATTR.campaign,
-      content: ATTR.content, aud: ATTR.aud, referrer: ATTR.referrer
+      content: ATTR.content, aud: ATTR.aud, referrer: ATTR.referrer, via: ATTR.via, ts: Date.now()
     }));
     localStorage.setItem("ctn_utm", JSON.stringify({
       utm_source: ATTR.src, utm_medium: ATTR.medium, utm_campaign: ATTR.campaign,

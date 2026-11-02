@@ -414,6 +414,8 @@ footer p{max-width:860px;margin-top:12px}
   // first-touch attribution (UTMs / referrer), kept for the whole visit
   var q=new URLSearchParams(location.search);
   var attr=null; try{attr=JSON.parse(ls("ctn_attr")||"null")}catch(e){}
+  // saved campaign tags expire after 24h so an old ad click cannot be credited to a later visit
+  if(attr&&(!attr.ts||Date.now()-attr.ts>86400000))attr=null;
   if(!attr||q.get("utm_source")){
     attr={src:q.get("utm_source")||(document.referrer?new URL(document.referrer).hostname:"direct"),
           medium:q.get("utm_medium")||"",campaign:q.get("utm_campaign")||"",
@@ -422,6 +424,7 @@ footer p{max-width:860px;margin-top:12px}
   }
   if(q.get("aud"))attr.aud=q.get("aud").toLowerCase().replace(/[^a-z]/g,"").slice(0,12);
   if(q.get("utm_content"))attr.content=q.get("utm_content").slice(0,60);
+  if(!attr.ts||q.get("utm_source"))attr.ts=Date.now();
   ls("ctn_attr",JSON.stringify(attr));
 
   // audience-matched message (ads link with ?aud=gym|studio|spa|team)
