@@ -1,17 +1,64 @@
 {
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/sports", "destination": "/sports.html" },
-    { "source": "/studios", "destination": "/studios.html" },
-    { "source": "/clubs", "destination": "/clubs.html" }
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "ledpro.ctn-usa.com"
+        }
+      ],
+      "destination": "/ledpro.html"
+    },
+    {
+      "source": "/sports",
+      "destination": "/sports.html"
+    },
+    {
+      "source": "/studios",
+      "destination": "/studios.html"
+    },
+    {
+      "source": "/clubs",
+      "destination": "/clubs.html"
+    }
   ],
   "headers": [
-    { "source": "/preorder-accept", "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }] },
-    { "source": "/assets/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }] },
-    { "source": "/(.*)", "headers": [
-      { "key": "X-Content-Type-Options", "value": "nosniff" },
-      { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-      { "key": "X-Frame-Options", "value": "DENY" }
-    ] }
+    {
+      "source": "/preorder-accept",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        }
+      ]
+    }
   ]
 }
