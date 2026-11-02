@@ -12,6 +12,10 @@
       "destination": "/ledpro.html"
     },
     {
+      "source": "/",
+      "destination": "/oxypro-home.html"
+    },
+    {
       "source": "/sports",
       "destination": "/sports.html"
     },
