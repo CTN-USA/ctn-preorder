@@ -2,7 +2,7 @@
 
 Static pages, no build step. Import into Vercel as-is.
 
-- `oxypro-home.html` — main OxyPro lander (served at `/` via a rewrite; `ledpro.ctn-usa.com` serves `ledpro.html` at `/`)
+- `index.html` — main OxyPro lander
 - `preorder.html` — public pre-order form (served at `/preorder`)
 - `preorder-accept.html` — quote accept page linked from the emailed quote (served at `/preorder-accept`)
 - `sports.html` / `studios.html` / `clubs.html` — LinkedIn Ads vertical landers (`/sports`, `/studios`, `/clubs`) with wellbeing + dollar ROI and soft-lead form into `preorder-intake` (`lead_type=linkedin_vertical_lead`)

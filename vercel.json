@@ -2,20 +2,6 @@
   "cleanUrls": true,
   "rewrites": [
     {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "ledpro.ctn-usa.com"
-        }
-      ],
-      "destination": "/ledpro.html"
-    },
-    {
-      "source": "/",
-      "destination": "/oxypro-home.html"
-    },
-    {
       "source": "/sports",
       "destination": "/sports.html"
     },
@@ -63,6 +49,19 @@
           "value": "DENY"
         }
       ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "ledpro.ctn-usa.com"
+        }
+      ],
+      "destination": "/ledpro",
+      "permanent": false
     }
   ]
 }
