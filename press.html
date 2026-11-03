@@ -278,6 +278,25 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
     try{fetch(TRACK,{method:"POST",headers:{"Content-Type":"application/json"},body:body,keepalive:true,mode:"cors"}).catch(function(){})}catch(e){}
   }
   send("press_view");
+
+  // press-page engagement: video, downloads, interview/email clicks (each fires once per page load)
+  var done={};
+  function once(ev,extra){if(done[ev])return;done[ev]=1;send(ev,extra)}
+  var v=document.querySelector("video");
+  if(v){
+    v.addEventListener("play",function(){once("press_video_play")});
+    v.addEventListener("timeupdate",function(){if(v.duration&&v.currentTime/v.duration>=0.5)once("press_video_50")});
+    v.addEventListener("ended",function(){once("press_video_end")});
+  }
+  document.addEventListener("click",function(e){
+    var a=e.target.closest&&e.target.closest("a[href]"); if(!a)return;
+    var h=a.getAttribute("href")||"";
+    if(/\.pdf(\?|$)/i.test(h))send("press_pdf_click");
+    else if(/\.zip(\?|$)/i.test(h))send("press_zip_click");
+    else if(/\.mp4(\?|$)/i.test(h))send("press_video_download");
+    else if(/^mailto:/i.test(h))send(/interview/i.test(h)?"press_interview_click":"press_email_click");
+  },true);
+  var s90=false;window.addEventListener("scroll",function(){if(s90)return;var d=document.documentElement;if((window.scrollY+window.innerHeight)/d.scrollHeight>=0.9){s90=true;send("press_scroll_90")}},{passive:true});
 })();
 </script>
 <noscript>
