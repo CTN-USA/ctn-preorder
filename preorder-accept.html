@@ -77,5 +77,8 @@ if(!ACCEPT_API){
 }else if(!t){c.innerHTML="<p class='err'>This link isn't valid.</p>"}
 else fetch(ACCEPT_API+"?t="+encodeURIComponent(t)).then(function(r){return r.json()}).then(function(j){if(!j.ok&&!j.lines)throw new Error(j.error);render(j)}).catch(function(e){c.innerHTML="<p class='err'>"+esc(e.message||"We couldn't load your quote.")+" Call (904) 659-2442.</p>"});
 </script>
+<!-- CTN first-party pixel -->
+<script>(function(){new Image(1,1).src="https://ocgopivrkhroeiaoaiyy.supabase.co/functions/v1/px?p=accept&h="+encodeURIComponent(location.hostname)+"&t="+Date.now()})();</script>
+<noscript><img src="https://ocgopivrkhroeiaoaiyy.supabase.co/functions/v1/px?p=accept&amp;nojs=1" width="1" height="1" alt="" style="position:absolute;left:-9999px"></noscript>
 </body>
 </html>
