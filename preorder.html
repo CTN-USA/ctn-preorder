@@ -57,9 +57,18 @@ button.go[disabled]{opacity:.6;cursor:wait}
 #done{display:none;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px;text-align:center}
 #done h2{margin:0 0 8px;color:var(--ok)}
 #done .ref{display:inline-block;margin:10px 0;padding:8px 16px;background:var(--bg);border-radius:8px;font-weight:700;letter-spacing:.04em}
+#bh_follow{display:none;margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
+#bh_follow.on{display:block}
+#bh_follow .q{font-weight:700;margin:0 0 14px}
+#bh_follow .choices{display:flex;gap:10px;justify-content:center}
+#bh_follow .choices button{background:#fff;color:var(--ink);border:2px solid var(--line);border-radius:10px;font:inherit;font-weight:700;padding:10px 28px;cursor:pointer;min-width:108px}
+#bh_follow .choices button:hover,#bh_follow .choices button:focus{border-color:var(--teal);background:#EAF5F9;outline:2px solid var(--teal);outline-offset:1px}
+#bh_follow .apply{display:inline-block;margin-top:14px;background:var(--teal);color:#fff;border-radius:10px;font-weight:700;padding:12px 22px;text-decoration:none}
+#bh_follow .apply:hover{background:var(--teal-d)}
+#bh_follow .note{text-align:left}
 #demo{display:none;text-align:left;background:#10222E;color:#C9F0FF;padding:14px;border-radius:8px;font-size:12px;overflow:auto;margin-top:16px;white-space:pre-wrap}
 footer{max-width:820px;margin:0 auto;padding:0 16px 40px;color:var(--mute);font-size:13px}
-@media(max-width:640px){.grid,.prod,.pay,.steps{grid-template-columns:1fr}fieldset{padding:16px}header h1{font-size:24px}}
+@media(max-width:640px){.grid,.prod,.pay,.steps{grid-template-columns:1fr}fieldset{padding:16px}header h1{font-size:24px}#bh_follow .choices{flex-direction:column}#bh_follow .choices button,#bh_follow .apply{width:100%;box-sizing:border-box}}
 </style>
 <!-- LinkedIn Insight Tag -->
 <script type="text/javascript">
@@ -223,6 +232,20 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
   <p>We're preparing your custom quote and will email it to <b id="d_email"></b> shortly.</p>
   <div class="ref" id="d_ref"></div>
   <p style="color:var(--mute);font-size:14px">Open the quote email and use the accept link to move forward. Check your spam folder if you don't see it within a few minutes. Questions? Call (904) 659-2442 or email sales@CTN-USA.com.</p>
+  <div id="bh_follow">
+    <div id="bh_ask" role="group" aria-labelledby="bh_q">
+      <p class="q" id="bh_q">Have you already applied for financing with Brickhouse Capital?</p>
+      <div class="choices">
+        <button type="button" id="bh_yes">Yes</button>
+        <button type="button" id="bh_no">No</button>
+      </div>
+    </div>
+    <div id="bh_yes_msg" style="display:none"><div class="note">Thank you. The CTN team will follow up.</div></div>
+    <div id="bh_no_msg" style="display:none">
+      <div class="note">Please apply for financing with Brickhouse Capital.</div>
+      <a class="apply" href="https://partners.brickhousecapital.com/ctn/" target="_blank" rel="noopener noreferrer">Apply with Brickhouse Capital</a>
+    </div>
+  </div>
   <pre id="demo"></pre>
 </section>
 </main>
@@ -269,6 +292,22 @@ document.querySelectorAll('input[name=pay]').forEach(function(r){r.addEventListe
 $("bh_status").addEventListener("change",function(){$("bh_refwrap").style.display=this.value==="not_started"?"none":"block"});
 $("taxex").addEventListener("change",function(){$("p_tax").classList.toggle("on",this.checked)});
 $("same").addEventListener("change",function(){$("siteaddr").style.display=this.checked?"none":"grid"});
+
+/* Shown only after a financing pre-order has already been saved. Answering does not resubmit or change that request. */
+function showBrickhouseFollowup(method){
+  var on=method==="financing";
+  $("bh_follow").classList.toggle("on",on);
+  $("bh_ask").style.display=on?"block":"none";
+  $("bh_yes_msg").style.display="none";
+  $("bh_no_msg").style.display="none";
+}
+function answerBrickhouse(applied){
+  $("bh_ask").style.display="none";
+  $("bh_yes_msg").style.display=applied?"block":"none";
+  $("bh_no_msg").style.display=applied?"none":"block";
+}
+$("bh_yes").addEventListener("click",function(){answerBrickhouse(true)});
+$("bh_no").addEventListener("click",function(){answerBrickhouse(false)});
 
 function val(id){return ($(id).value||"").trim()}
 function setBad(key,bad){var el=document.querySelector('[data-f="'+key+'"]');if(el)el.classList.toggle("bad",bad)}
@@ -330,6 +369,7 @@ $("f").addEventListener("submit",function(e){
     $("f").style.display="none"; document.querySelector(".steps").style.display="none";
     $("d_email").textContent=payload.contact.email; $("d_ref").textContent="Reference: "+ref;
     if(demo){$("demo").style.display="block";$("demo").textContent="DEMO MODE: nothing was sent. This is the payload the page will POST:\n\n"+JSON.stringify(payload,null,2)}
+    showBrickhouseFollowup(pay);
     $("done").style.display="block"; window.scrollTo({top:0,behavior:"smooth"});
   }
   if(!INTAKE_URL){ setTimeout(function(){finish("DEMO-0000",true)},300); return; }
