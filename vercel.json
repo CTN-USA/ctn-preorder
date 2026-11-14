@@ -55,6 +55,15 @@
       ]
     },
     {
+      "source": "/xcryo-order",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
       "source": "/assets/(.*)",
       "headers": [
         {
@@ -100,6 +109,17 @@
         }
       ],
       "destination": "/ledpro",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "xcryo.ctn-usa.com"
+        }
+      ],
+      "destination": "/xcryo",
       "permanent": false
     }
   ]
