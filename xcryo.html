@@ -227,7 +227,7 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
   </div>
 </div></section>
 
-<section style="padding-top:0"><div class="wrap">
+<section id="how" style="padding-top:0"><div class="wrap">
   <div class="split">
     <div>
       <div class="eyebrow">How it works</div>
@@ -280,7 +280,7 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
   <p class="hint" style="margin-top:14px">Videos are produced by the manufacturer for an international audience and show an earlier X°CRYO cabinet. <a id="vlink" href="https://www.youtube.com/watch?v=q5hgwiag-VQ" target="_blank" rel="noopener" style="text-decoration:underline">Open on YouTube</a></p>
 </div></section>
 
-<section style="padding-top:0"><div class="wrap">
+<section id="who" style="padding-top:0"><div class="wrap">
   <div class="eyebrow">Who it's for</div>
   <h2>Built for how you work.</h2>
   <div class="who">
@@ -385,7 +385,7 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
   <details><summary>How does leasing through Brickhouse work?</summary><p>Choose "Lease through Brickhouse" on the order form. Once you accept your quote we walk you through the application. Your order is accepted when the lease is approved. Approval and terms are decided by Brickhouse.</p></details>
   <details><summary>What does it need at my site?</summary><p>X°CRYO is self-contained and plugs in. It needs no gas, water or ventilation work. Electrical supply at the site is the customer's responsibility, and we confirm the configuration with you before delivery.</p></details>
   <details><summary>Do you train my staff?</summary><p>Yes. CTN USA offers delivery, setup and staff training. We confirm the details with you alongside your quote so your team is ready on day one.</p></details>
-  <details><summary>Can I just talk to someone first?</summary><p>Of course. Use the request-info form below, call (904) 659-2442 or email sales@ctn-usa.com.</p></details>
+  <details><summary>Can I just talk to someone first?</summary><p>Of course. Use the request-info form below, call <a href="tel:+19042067027">(904) 206-7027</a> or email <a href="mailto:sales@ctn-usa.com">sales@ctn-usa.com</a>.</p></details>
 </div></section>
 
 <section id="lead" class="band" style="padding-bottom:100px"><div class="wrap">
@@ -433,7 +433,7 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
       <label class="chk"><input type="checkbox" id="consent" required> <span>I agree CTN USA may contact me about X°CRYO. This is not a final purchase. For general wellness use only, not a medical device claim.</span></label>
       <div style="margin-top:18px"><button class="btn btn-primary" type="submit" id="submit">Request info</button></div>
       <div class="form-msg" id="form-msg"></div>
-      <p class="hint" style="margin-top:16px">US market only. Or call (904) 659-2442 or email sales@ctn-usa.com.</p>
+      <p class="hint" style="margin-top:16px">US market only. Or call <a href="tel:+19042067027">(904) 206-7027</a> or email <a href="mailto:sales@ctn-usa.com">sales@ctn-usa.com</a>.</p>
     </form>
   </div>
   <div class="order-band">
@@ -444,7 +444,7 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
 
 <footer><div class="wrap">
   <img src="assets/ctn-logo.png" alt="CTN">
-  <p><b>Wavelength Holdings, LLC d/b/a CTN USA</b> · 1250 Imeson Park Blvd, Suite 514-516, Jacksonville, FL 32218 · <a href="mailto:sales@ctn-usa.com">sales@ctn-usa.com</a> · <a href="tel:+19046592442">(904) 659-2442</a></p>
+  <p><b>Wavelength Holdings, LLC d/b/a CTN USA</b> · 1250 Imeson Park Blvd, Suite 514-516, Jacksonville, FL 32218 · <a href="mailto:sales@ctn-usa.com">sales@ctn-usa.com</a> · <a href="tel:+19042067027">(904) 206-7027</a></p>
   <p>X°CRYO is intended for general wellness and cosmetic use. It is not intended to diagnose, treat, cure, mitigate or prevent any disease or medical condition. Statements on this page have not been evaluated by the U.S. Food and Drug Administration. Individual results vary. Operators should follow CTN screening and safety protocols.</p>
 </div></footer>
 
@@ -453,6 +453,7 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
   <a class="btn btn-primary js-order" data-loc="sticky" href="/xcryo-order">Order today</a>
 </div>
 
+<script src="assets/xcryo-activity.js"></script>
 <script>
 (function(){
   var vertical = "xcryo";
@@ -496,13 +497,23 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
       }).catch(function(){});
     } catch(e){}
   }
+  function vaEvent(name, data){
+    try {
+      if (typeof window.va === "function") window.va("event", {name: name, data: data || {}});
+    } catch(e){}
+  }
   track("vertical_view");
+  bindActivity(track);
 
   /* Order links keep the session id and test flag. */
   Array.prototype.forEach.call(document.querySelectorAll(".js-order"), function(a){
     var u = "/xcryo-order?sid=" + encodeURIComponent(sid) + (q.get("test") === "1" ? "&test=1" : "");
     a.setAttribute("href", u);
-    a.addEventListener("click", function(){ track("order_click", {loc: a.getAttribute("data-loc") || ""}); });
+    a.addEventListener("click", function(){
+      var loc = a.getAttribute("data-loc") || "";
+      track("order_click", {loc: loc});
+      vaEvent("order_click", {loc: loc, page: vertical});
+    });
   });
 
   /* Video: load the YouTube player only when asked. */
@@ -664,17 +675,18 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
           (res.j.quoted ? ". Your written quote is on its way to your inbox, and a CTN USA teammate will follow up." : ". A CTN USA teammate will follow up with your quote.");
         form.reset();
         track("vertical_lead_ok", {reference: res.j.reference || ""});
+        vaEvent("vertical_lead_ok", {page: vertical});
         if (window.lintrk && window._linkedin_partner_id) {
           try { window.lintrk("track", {conversion_id: 32693217}); } catch(e){}
         }
       } else {
         msg.className = "form-msg err";
-        msg.textContent = (res.j && res.j.error) || ("Could not submit (HTTP " + res.status + "). Call (904) 659-2442.");
+        msg.textContent = (res.j && res.j.error) || ("Could not submit (HTTP " + res.status + "). Call (904) 206-7027.");
         track("vertical_lead_err", {status: res.status});
       }
     }).catch(function(){
       msg.className = "form-msg err";
-      msg.textContent = "Network error. Please call (904) 659-2442 or email sales@ctn-usa.com.";
+      msg.textContent = "Network error. Please call (904) 206-7027 or email sales@ctn-usa.com.";
       track("vertical_lead_err", {status: "network"});
     }).finally(function(){
       btn.disabled = false;

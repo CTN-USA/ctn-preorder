@@ -222,12 +222,13 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
   <h2>Thank you, your request is in.</h2>
   <p>We're preparing your custom quote and will email it to <b id="d_email"></b> shortly.</p>
   <div class="ref" id="d_ref"></div>
-  <p style="color:var(--mute);font-size:14px">Open the quote email and use the accept link to move forward. Check your spam folder if you don't see it within a few minutes. Questions? Call (904) 659-2442 or email sales@CTN-USA.com.</p>
+  <p style="color:var(--mute);font-size:14px">Open the quote email and use the accept link to move forward. Check your spam folder if you don't see it within a few minutes. Questions? Call <a href="tel:+19042067027" style="color:inherit">(904) 206-7027</a> or email <a href="mailto:sales@CTN-USA.com" style="color:inherit">sales@CTN-USA.com</a>.</p>
   <pre id="demo"></pre>
 </section>
 </main>
-<footer>Wavelength Holdings, LLC d/b/a CTN-USA · 1250 Imeson Park Blvd, Suite 514-516, Jacksonville, FL 32218 · (904) 659-2442 · sales@CTN-USA.com</footer>
+<footer>Wavelength Holdings, LLC d/b/a CTN-USA · 1250 Imeson Park Blvd, Suite 514-516, Jacksonville, FL 32218 · <a href="tel:+19042067027" style="color:inherit;text-decoration:none">(904) 206-7027</a> · <a href="mailto:sales@CTN-USA.com" style="color:inherit;text-decoration:none">sales@CTN-USA.com</a></footer>
 
+<script src="assets/xcryo-activity.js"></script>
 <script>
 /* ---------- CONFIG ---------- */
 // After deploying the intake function, paste its URL here. Left empty, the page runs in demo mode (nothing is sent).
@@ -249,7 +250,13 @@ function track(event,extra){
   try{fetch(TRACK_URL,{method:"POST",headers:{"Content-Type":"application/json"},keepalive:true,mode:"cors",
     body:JSON.stringify({event:event,sid:ATTR.sid,page:"xcryo-order",variant:ATTR.variant,src:ATTR.src,medium:ATTR.medium,campaign:ATTR.campaign,referrer:ATTR.referrer,extra:Object.assign({aud:ATTR.aud,content:ATTR.content},extra||{})})}).catch(function(){})}catch(e){}
 }
+function vaEvent(name, data){
+  try {
+    if (typeof window.va === "function") window.va("event", {name: name, data: data || {}});
+  } catch(e){}
+}
 track("xcryo_order_view");
+if (typeof bindActivity === "function") bindActivity(track);
 var _started=false;
 document.addEventListener("input",function(){if(!_started){_started=true;track("xcryo_order_start")}},{passive:true});
 
@@ -344,11 +351,12 @@ $("f").addEventListener("submit",function(e){
     .then(function(x){
       if(!x.ok||!x.j.ok) throw new Error((x.j&&x.j.error)||"Something went wrong.");
       track("xcryo_order_submit",{ref:x.j.reference,method:pay});
+      vaEvent("xcryo_order_submit", {method: pay, page: "xcryo-order"});
       finish(x.j.reference,false);
     })
     .catch(function(err){
       btn.disabled=false; btn.textContent="Submit order request";
-      $("err").textContent=(err&&err.message?err.message:"We couldn't submit your request.")+" Please try again, or call (904) 659-2442.";
+      $("err").textContent=(err&&err.message?err.message:"We couldn't submit your request.")+" Please try again, or call (904) 206-7027.";
       $("err").style.display="block"; window.scrollTo({top:0,behavior:"smooth"});
     });
 });
