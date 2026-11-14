@@ -313,14 +313,14 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
       <label class="chk"><input type="checkbox" id="consent" required> <span>I agree CTN USA may contact me about LedPro. This is not a final purchase. For general wellness use only, not a medical device claim.</span></label>
       <div style="margin-top:18px"><button class="btn btn-primary" type="submit" id="submit">Request a quote</button></div>
       <div class="form-msg" id="form-msg"></div>
-      <p class="hint" style="margin-top:16px">US market only. Or call (904) 659-2442 or email sales@ctn-usa.com.</p>
+      <p class="hint" style="margin-top:16px">US market only. Or call (904) 206-7027 or email sales@ctn-usa.com.</p>
     </form>
   </div>
 </div></section>
 
 <footer><div class="wrap">
   <img src="assets/ctn-logo.png" alt="CTN">
-  <p><b>Wavelength Holdings, LLC d/b/a CTN USA</b> · Jacksonville, FL · <a href="mailto:sales@ctn-usa.com">sales@ctn-usa.com</a> · (904) 659-2442</p>
+  <p><b>Wavelength Holdings, LLC d/b/a CTN USA</b> · Jacksonville, FL · <a href="mailto:sales@ctn-usa.com">sales@ctn-usa.com</a> · (904) 206-7027</p>
   <p>LedPro is intended for general wellness use. It is not intended to diagnose, treat, cure, mitigate or prevent any disease or medical condition. Statements on this page have not been evaluated by the U.S. Food and Drug Administration. Individual results vary. Operators should follow CTN screening and safety protocols.</p>
 </div></footer>
 
@@ -500,12 +500,12 @@ s.parentNode.insertBefore(b, s);})(window.lintrk);
         }
       } else {
         msg.className = "form-msg err";
-        msg.textContent = (res.j && res.j.error) || ("Could not submit (HTTP " + res.status + "). Call (904) 659-2442.");
+        msg.textContent = (res.j && res.j.error) || ("Could not submit (HTTP " + res.status + "). Call (904) 206-7027.");
         track("vertical_lead_err", {status: res.status});
       }
     }).catch(function(){
       msg.className = "form-msg err";
-      msg.textContent = "Network error. Please call (904) 659-2442 or email sales@ctn-usa.com.";
+      msg.textContent = "Network error. Please call (904) 206-7027 or email sales@ctn-usa.com.";
       track("vertical_lead_err", {status: "network"});
     }).finally(function(){
       btn.disabled = false;
